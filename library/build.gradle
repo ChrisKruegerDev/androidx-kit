@@ -6,15 +6,36 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 def config = rootProject.ext
 
+archivesBaseName = "placebox-androidx"
+
 install {
     repositories.mavenInstaller {
         pom.project {
+            name 'Placebox AndroidX'
+            description 'A library with improvements for androidx'
+            url 'https://github.com/placeboxapp/placebox-androidx'
+
             packaging 'aar'
             groupId "com.placebox"
-            artifactId "androidx"
-            name 'androidx'
-            description 'Placebox AndroidX library'
-            version '1.0.0'
+            artifactId "placebox-androidx"
+            version '0.1'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/placeboxapp/placebox-androidx.git'
+                url 'https://github.com/placeboxapp/placebox-androidx'
+            }
+            developers {
+                developer {
+                    name 'chrisbln'
+                }
+            }
         }
     }
 }
@@ -28,16 +49,18 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = 'androidx'
+        name = 'placebox-androidx'
         userOrg = "placebox"
-        licenses = ['MIT']
+        licenses = ['Apache-2.0']
         websiteUrl = 'https://github.com/PlaceboxApp/placebox-androidx'
         vcsUrl = 'https://github.com/PlaceboxApp/placebox-androidx.git'
+        publish = true
+
         version {
-            name = '1.0.0'
+            name = '0.1'
             desc = 'Placebox AndroidX version ' + config.versionName
             released  = new Date()
-            vcsTag = '1.0.0'
+            vcsTag = '0.1'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
