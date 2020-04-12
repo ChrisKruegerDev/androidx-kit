@@ -4,14 +4,19 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'https://maven-central-eu.storage-download.googleapis.com/repos/central/data' }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.8.5"
 }
 
 allprojects {
