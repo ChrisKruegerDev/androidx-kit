@@ -1,0 +1,80 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def config = rootProject.ext
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    useLibrary 'android.test.runner'
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+
+        versionName config.versionName
+        versionCode config.versionCode
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xallow-result-return-type"]
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    lintOptions {
+        // for CI server: only check this module with dependencies instead of each module separately
+        checkDependencies true
+        // for CI server: log reports (report files are not public)
+        textReport true
+    }
+
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
+
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+
+}
+
+dependencies {
+    Map<String, String> dependencies = config.dependencies
+
+    // kotlin
+    implementation dependencies.kotlin
+    implementation dependencies.kotlinReflect
+}

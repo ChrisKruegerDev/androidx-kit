@@ -1,0 +1,8 @@
+ext {
+
+
+    dependencies = [
+            kotlin       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    ]
+}
