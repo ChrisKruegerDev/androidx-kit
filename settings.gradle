@@ -1,2 +1,3 @@
 rootProject.name='placebox-androidx'
 include ':library'
+include ':sample'
