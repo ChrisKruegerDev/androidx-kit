@@ -80,9 +80,11 @@ dependencies {
 
     // androidx
     implementation dependencies.recyclerView
+    implementation dependencies.coreKtx
 
     // user interface
     api dependencies.glideRecyclerView
+    implementation dependencies.material
 
 }
 

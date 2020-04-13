@@ -17,7 +17,24 @@ dependencies {
 ```
 
 ## Usage
+Creating a RecyclerView adapter with the builder:
 
+```
+private val itemsAdapter = recyclerViewAdapter<TextItem> {
+    headerViewHolder { adapter, parent -> HeaderViewHolder(adapter, parent) }
+    viewHolder { adapter, parent -> TextViewHolder(adapter, parent) }
+
+    onItemId { it.id }
+
+    onClick {
+        Toast.makeText(this@MainActivity, "Click on ${it.text}", Toast.LENGTH_SHORT).show()
+    }
+
+    onLongClick {
+        Toast.makeText(this@MainActivity, "Long click on ${it.text}", Toast.LENGTH_SHORT).show()
+    }
+}
+```
 
 ## License
 Placebox AndroidX is published under the Apache 2.0 license.
