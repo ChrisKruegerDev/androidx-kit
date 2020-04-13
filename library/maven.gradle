@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+def config = rootProject.ext
+
+group = "com.placebox"
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'Placebox AndroidX'
+            description 'A library with improvements for androidx'
+            url 'https://github.com/placeboxapp/placebox-androidx'
+
+            packaging 'aar'
+            groupId "com.placebox"
+            artifactId "placebox-androidx"
+            version config.versionName
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/placeboxapp/placebox-androidx.git'
+                url 'https://github.com/placeboxapp/placebox-androidx'
+            }
+            developers {
+                developer {
+                    id 'chrisbln'
+                    name 'Christian Krüger'
+                }
+            }
+        }
+    }
+}
+
