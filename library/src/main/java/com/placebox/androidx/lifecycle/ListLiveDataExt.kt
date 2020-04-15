@@ -1,8 +1,9 @@
-package com.placebox.androidx.widget.recyclerview.adapter
+package com.placebox.androidx.lifecycle
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.placebox.androidx.widget.recyclerview.adapter.AbstractListRecyclerAdapter
 
 fun <T : Any> LiveData<out List<T>>.bindAdapterUpdate(owner: LifecycleOwner, adapter: AbstractListRecyclerAdapter<T>) {
     observe(owner, Observer {

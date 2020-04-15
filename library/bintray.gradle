@@ -5,7 +5,7 @@ def config = rootProject.ext
 version config.versionName
 
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.sourceFiles
+    from android.sourceSets.main.java.srcDirs
     archiveClassifier.set('sources')
 }
 

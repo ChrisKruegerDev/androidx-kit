@@ -6,7 +6,10 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.placebox.androidx.lifecycle.SingleLiveEvent
 import com.placebox.ktx.type.isNullOrFalse
 
 typealias ViewProvider = () -> View?
@@ -66,3 +69,14 @@ fun View.showSnackbar(message: SnackbarMessage, anchorViewProvider: ViewProvider
 
     return snackbar.show()
 }
+
+fun SingleLiveEvent<SnackbarMessage>.bindTo(
+    lifecycleOwner: LifecycleOwner,
+    parent: View,
+    anchorViewProvider: ViewProvider? = null
+) {
+    observe(lifecycleOwner, Observer { action ->
+        action?.let { parent.showSnackbar(message = it, anchorViewProvider = anchorViewProvider) }
+    })
+}
+

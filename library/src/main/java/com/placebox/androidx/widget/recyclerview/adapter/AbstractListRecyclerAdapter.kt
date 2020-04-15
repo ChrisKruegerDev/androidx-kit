@@ -9,7 +9,7 @@ import java.util.*
 typealias ListFilter<T> = (T) -> Boolean
 
 abstract class AbstractListRecyclerAdapter<T : Any>(
-        final override val config: RecyclerAdapterConfig<T>
+    final override val config: RecyclerAdapterConfig<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RecyclerViewAdapterBase<T> {
 
     final override var data: MutableList<T> = ArrayList()
@@ -26,11 +26,22 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
     private val helper by lazy { RecyclerAdapterHelper<T>(this) }
     private var filter: ListFilter<T>? = null
 
+    init {
+        setHasStableIds(config.onItemId != null)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-            helper.onCreateViewHolder(parent, viewType)
+        helper.onCreateViewHolder(parent, viewType)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
-            helper.onBindViewHolder(holder, position)
+        helper.onBindViewHolder(holder, position)
+
+    /**
+     * If payloads is empty then the regular bind view holder will be called.
+     */
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) {
+        helper.onBindViewHolder(holder, position, if(payloads.isEmpty()) null else payloads)
+    }
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         super.onViewRecycled(holder)
@@ -44,7 +55,7 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
     override fun getItemId(index: Int): Long = helper.getItemId(index)
 
     override fun getItem(position: Int): T? =
-            if (position < 0 || position >= data.size) null else data[position]
+        if (position < 0 || position >= data.size) null else data[position]
 
     fun remove(item: T) {
         val i = data.indexOf(item)
@@ -68,7 +79,7 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
     }
 
     fun setData(newList: List<T>?) {
-        backedData = newList?.let{ ArrayList(it) } ?: ArrayList()
+        backedData = newList?.let { ArrayList(it) } ?: ArrayList()
         updateData(backedData)
         // update hole list to prevent wrong position in UI
         notifyDataSetChanged()

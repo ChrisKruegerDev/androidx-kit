@@ -3,6 +3,7 @@ package com.placebox.androidx.widget.recyclerview.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.placebox.androidx.widget.recyclerview.viewholder.BindValue
+import com.placebox.androidx.widget.recyclerview.viewholder.BindViewHolder
 import com.placebox.androidx.widget.recyclerview.viewholder.Recyclable
 import com.placebox.androidx.widget.recyclerview.viewholder.SelectionViewHolder
 import kotlin.NoSuchElementException
@@ -30,13 +31,13 @@ class RecyclerAdapterHelper<T : Any>(
         return holder ?: throw NoSuchElementException("no view holder for type '$viewType'")
     }
 
-    fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: List<Any>? = null) {
         if (position == 0 && holder.itemViewType == ViewType.VIEW_TYPE_HEADER)
             bindHeader(holder)
         else if (holder.itemViewType == ViewType.VIEW_TYPE_FOOTER && position == adapter.getItemCount() - 1)
             adapter.onBindFooter(holder)
         else
-            onBindDefault(holder, position - if (adapter.useHeader()) 1 else 0)
+            onBindDefault(holder, position - if (adapter.useHeader()) 1 else 0, payloads)
     }
 
     fun getItemId(index: Int): Long {
@@ -50,7 +51,7 @@ class RecyclerAdapterHelper<T : Any>(
         if (adapter.useHeader())
             newIndex = index - 1
 
-        if (newIndex in 0..(dataSize - 1)) {
+        if (newIndex in 0 until dataSize) {
             val item = adapter.getItem(newIndex) ?: return RecyclerView.NO_ID
             return config.onItemId?.invoke(item) ?: RecyclerView.NO_ID
         } else {
@@ -84,10 +85,14 @@ class RecyclerAdapterHelper<T : Any>(
         if (holder is BindValue<*>) holder.bind(null)
     }
 
-    private fun onBindDefault(holder: RecyclerView.ViewHolder, position: Int) {
-        val value: T? = getItem(position)
+    @Suppress("UNCHECKED_CAST")
+    private fun onBindDefault(holder: RecyclerView.ViewHolder, position: Int, payloads: List<Any>?) {
+        if(payloads != null) {
+            (holder as? BindViewHolder<T>)?.payload(payloads)
+            return
+        }
 
-        @Suppress("UNCHECKED_CAST")
+        val value: T? = getItem(position)
         (holder as? BindValue<T>)?.bind(value)
 
         val selection = adapter.selection

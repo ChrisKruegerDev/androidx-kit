@@ -53,7 +53,11 @@ abstract class BindViewHolder<T : Any>(
     protected abstract fun bindValue(value: T?)
 
     protected open fun unbindValue(value: T) {
+        // do something if needed
+    }
 
+    open fun payload(payloads: List<Any>) {
+        // do something if needed
     }
 
     fun isLastPosition(): Boolean {
@@ -70,4 +74,5 @@ abstract class BindViewHolder<T : Any>(
 
         return position == 0
     }
+
 }
