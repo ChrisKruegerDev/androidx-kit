@@ -22,7 +22,7 @@ class ItemDiffCallback<T : Any> : DiffUtil.ItemCallback<T>() {
 
     override fun getChangePayload(oldItem: T, newItem: T): Any? {
         return if (oldItem is Diffable)
-            oldItem.isContentTheSame(newItem)
+            oldItem.getChangePayload(newItem)
         else
             null
     }
