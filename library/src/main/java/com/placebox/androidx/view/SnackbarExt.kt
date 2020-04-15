@@ -7,7 +7,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
-import com.placebox.androidx.isNullOrFalse
+import com.placebox.ktx.type.isNullOrFalse
 
 typealias ViewProvider = () -> View?
 

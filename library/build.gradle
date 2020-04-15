@@ -64,15 +64,13 @@ android {
             abortOnError false
         }
     }
-
-    configurations {
-        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
-    }
-
 }
 
 dependencies {
     Map<String, String> dependencies = config.dependencies
+
+    // placebox
+    implementation dependencies.ktx
 
     // kotlin
     implementation dependencies.kotlin
@@ -81,11 +79,14 @@ dependencies {
     // androidx
     implementation dependencies.recyclerView
     implementation dependencies.coreKtx
+    implementation dependencies.preference
 
     // user interface
     api dependencies.glideRecyclerView
     implementation dependencies.material
 
+    // utils
+    implementation dependencies.inject
 }
 
 tasks.withType(Javadoc).all {
