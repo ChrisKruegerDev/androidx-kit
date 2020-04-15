@@ -16,4 +16,6 @@ interface GlideViewLoader<V> {
 
     fun clearGlide(imageView: ImageView)
 
+    fun getTag(model: V?): String? = null
+
 }

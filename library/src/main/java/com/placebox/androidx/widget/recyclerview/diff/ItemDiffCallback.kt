@@ -20,6 +20,11 @@ class ItemDiffCallback<T : Any> : DiffUtil.ItemCallback<T>() {
             oldItem == newItem
     }
 
+    /**
+     * When {@link #areItemsTheSame(int, int)} returns {@code true} for two items and
+     * {@link #areContentsTheSame(int, int)} returns false for them, DiffUtil
+     * calls this method to get a payload about the change.
+     */
     override fun getChangePayload(oldItem: T, newItem: T): Any? {
         return if (oldItem is Diffable)
             oldItem.getChangePayload(newItem)

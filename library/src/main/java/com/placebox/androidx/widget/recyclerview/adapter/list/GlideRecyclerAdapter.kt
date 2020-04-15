@@ -30,15 +30,27 @@ interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, ListPreloa
         super.onBind(value, holder)
 
         if (holder is ImageViewHolder) {
+            val imageView = holder.imageView
+
+            val tag = imageView.tag
+            val newTag = glideConfig.loader?.getTag(value)
+            // don't load it again if it has the same tag
+            if (tag != null && newTag == tag) return
+
             val requestBuilder = glideConfig.loader?.load(value, holder)
-            requestBuilder?.into(holder.imageView)?.waitForLayout()
-            glideConfig.transitionNameProvider?.let { provider -> holder.imageView.transitionName = value?.let { provider(it) } }
+            requestBuilder?.into(imageView)?.waitForLayout()
+            imageView.tag = newTag
+            glideConfig.transitionNameProvider?.let { provider -> imageView.transitionName = value?.let { provider(it) } }
         }
     }
 
     override fun onClear(holder: RecyclerView.ViewHolder) {
         super.onClear(holder)
-        if (holder is ImageViewHolder) glideConfig.loader?.clearGlide(holder.imageView)
+        if (holder is ImageViewHolder) {
+            val imageView = holder.imageView
+            glideConfig.loader?.clearGlide(imageView)
+            imageView.tag = null
+        }
     }
 
     override fun getPreloadRequestBuilder(item: T): RequestBuilder<Drawable>? {
