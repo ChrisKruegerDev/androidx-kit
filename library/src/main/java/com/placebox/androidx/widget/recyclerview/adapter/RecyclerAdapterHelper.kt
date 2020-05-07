@@ -87,12 +87,12 @@ class RecyclerAdapterHelper<T : Any>(
 
     @Suppress("UNCHECKED_CAST")
     private fun onBindDefault(holder: RecyclerView.ViewHolder, position: Int, payloads: List<Any>?) {
+        val value: T? = getItem(position)
         if(payloads != null) {
-            (holder as? BindViewHolder<T>)?.payload(payloads)
+            (holder as? BindViewHolder<T>)?.payload(value, payloads)
             return
         }
 
-        val value: T? = getItem(position)
         (holder as? BindValue<T>)?.bind(value)
 
         val selection = adapter.selection

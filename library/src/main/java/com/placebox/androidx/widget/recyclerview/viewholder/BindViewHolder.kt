@@ -50,13 +50,18 @@ abstract class BindViewHolder<T : Any>(
         bindValue(value)
     }
 
+    fun payload(value: T?, payloads: List<Any>) {
+        item = value
+        payloadValue(payloads)
+    }
+
     protected abstract fun bindValue(value: T?)
 
     protected open fun unbindValue(value: T) {
         // do something if needed
     }
 
-    open fun payload(payloads: List<Any>) {
+    protected open fun payloadValue(payloads: List<Any>) {
         // do something if needed
     }
 
