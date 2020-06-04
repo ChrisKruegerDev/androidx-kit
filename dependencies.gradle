@@ -2,27 +2,27 @@ ext {
 
     dependencies = [
             // placebox
-            ktx              : 'com.placebox:placebox-ktx:1.0.6',
+            ktx              : 'com.placebox:placebox-ktx:1.0.9',
 
             // kotlin
             kotlin           : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
             kotlinReflect    : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
 
-            // androidx
+            // androidxS
             appCompat        : "androidx.appcompat:appcompat:1.1.0",
             recyclerView     : "androidx.recyclerview:recyclerview:1.1.0",
-            contraintLayout  : "androidx.constraintlayout:constraintlayout:2.0.0-beta4",
-            coreKtx          : "androidx.core:core-ktx:1.1.0",
-            preference       : "androidx.preference:preference:1.1.0",
+            contraintLayout  : "androidx.constraintlayout:constraintlayout:2.0.0-beta6",
+            coreKtx          : "androidx.core:core-ktx:1.2.0",
+            preference       : "androidx.preference:preference:1.1.1",
 
             // user interface
-            material         : "com.google.android.material:material:1.2.0-alpha05",
+            material         : "com.google.android.material:material:1.2.0-beta01",
             glideRecyclerView: "com.github.bumptech.glide:recyclerview-integration:4.11.0",
 
             // utils
             inject           : "javax.inject:javax.inject:1",
 
             // testing
-            truth            : "com.google.truth:truth:1.0"
+            truth            : "com.google.truth:truth:1.0.1"
     ]
 }
