@@ -39,7 +39,7 @@ abstract class ShowDialogFragmentAction(private val cls: KClass<out DialogFragme
 
     final override fun execute(activity: FragmentActivity, fragment: Fragment?) {
         val fragmentManager = fragment?.childFragmentManager ?: activity.supportFragmentManager
-        fragmentManager.showDialogFragment(cls.java.simpleName, cls::createInstance, args)
+        fragmentManager.showDialogFragment(cls.java.simpleName, { cls.createInstance() }, args)
     }
 
 }
