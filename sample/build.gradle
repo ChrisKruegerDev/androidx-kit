@@ -6,12 +6,12 @@ apply plugin: 'kotlin-kapt'
 def config = rootProject.ext
 
 android {
-    compileSdkVersion config.compileSdkVersion
-    buildToolsVersion config.buildToolsVersion
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
+        minSdkVersion 23
+        targetSdkVersion 30
         versionName config.versionName
         versionCode config.versionCode
         applicationId "com.placebox.androidx.sample"
@@ -44,19 +44,10 @@ android {
 
 dependencies {
     implementation project(':library')
-
-    Map<String, String> dependencies = config.dependencies
-
-    // kotlin
-    implementation dependencies.kotlin
-    implementation dependencies.kotlinReflect
-
-    // androidx
-    implementation dependencies.appCompat
-    implementation dependencies.recyclerView
-    implementation dependencies.contraintLayout
-
-    // user interface
-    implementation dependencies.material
-
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.2"
+    implementation "com.google.android.material:material:1.3.0-alpha03"
 }
