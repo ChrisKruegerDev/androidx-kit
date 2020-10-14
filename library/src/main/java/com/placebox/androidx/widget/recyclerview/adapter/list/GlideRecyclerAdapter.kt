@@ -40,7 +40,6 @@ interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, ListPreloa
             val requestBuilder = glideConfig.loader?.load(value, holder)
             requestBuilder?.into(imageView)?.waitForLayout()
             imageView.tag = newTag
-            glideConfig.transitionNameProvider?.let { provider -> imageView.transitionName = value?.let { provider(it) } }
         }
     }
 

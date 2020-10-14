@@ -16,25 +16,14 @@ open class DefaultRecyclerAdapterConfig<T : Any> : RecyclerAdapterConfig<T>() {
             glideConfig.loader = value
         }
 
-    var transitionNameProvider: TransitionNameProvider<T>?
-        get() = glideConfig.transitionNameProvider
-        set(value) {
-            glideConfig.transitionNameProvider = value
-        }
-
     fun glide(block: GlideConfig<T>.() -> Unit) = glideConfig.apply(block)
-
-    fun onTransitionName(provider: TransitionNameProvider<T>) {
-        transitionNameProvider = provider
-    }
 
 }
 
 class GlideConfig<T> {
     val preloadProvider: ViewPreloadSizeProvider<T> = ViewPreloadSizeProvider()
     var loader: GlideViewLoader<in T>? = null
-    var transitionNameProvider: TransitionNameProvider<T>? = null
 }
 
-typealias TransitionNameProvider<T> = (T) -> String?
+
 
