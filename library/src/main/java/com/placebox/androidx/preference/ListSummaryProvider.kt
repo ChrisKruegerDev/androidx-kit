@@ -2,7 +2,6 @@ package com.placebox.androidx.preference
 
 import androidx.preference.ListPreference
 import androidx.preference.Preference
-import com.placebox.ktx.type.DASH
 
 typealias Formatter = CharSequence.() -> CharSequence
 
@@ -15,7 +14,7 @@ class ListSummaryProvider : Preference.SummaryProvider<ListPreference> {
         val format = format
 
         return when {
-            entry.isNullOrBlank() -> return DASH
+            entry.isNullOrBlank() -> return "-"
             format != null        -> entry.format()
             else                  -> entry
         }
