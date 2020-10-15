@@ -15,8 +15,6 @@ android {
         versionName config.versionName
         versionCode config.versionCode
         applicationId "com.placebox.androidx.sample"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -39,7 +37,6 @@ android {
     androidExtensions {
         experimental = true
     }
-
 }
 
 dependencies {
