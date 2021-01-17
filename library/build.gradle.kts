@@ -24,13 +24,16 @@ version = "$version_major.$version_minor.$version_patch"
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
-    implementation("com.moviebase:android-ktx:1.2.3")
+    implementation("com.moviebase:android-ktx:1.2.4")
+
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    api("com.github.bumptech.glide:recyclerview-integration:4.11.0")
+    implementation("androidx.browser:browser:1.2.0")
     implementation("com.google.android.material:material:1.3.0-rc01")
+
+    api("com.github.bumptech.glide:recyclerview-integration:4.11.0")
     implementation("javax.inject:javax.inject:1")
 }
 

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxLinesCollapsed" format="integer"/>
+    </declare-styleable>
+
     <declare-styleable name="DividerView">
         <attr name="strokeColor" format="color"/>
         <attr name="strokeWidth" format="dimension"/>
