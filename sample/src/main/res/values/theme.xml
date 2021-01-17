@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Placebox.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.AndroidElements.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/blue_A700</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/blue_A700</item>
