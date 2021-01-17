@@ -87,7 +87,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "bintray"
-                setUrl("https://api.bintray.com/maven/moviebase/maven/android-ktx/;publish=1;override=1")
+                setUrl("https://api.bintray.com/maven/moviebase/maven/android-elements/;publish=1;override=1")
 
                 credentials {
                     username = findProperty("BINTRAY_USER") as String?
