@@ -9,8 +9,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.snackbar.Snackbar
 import com.placebox.androidx.lifecycle.SingleLiveEvent
-import com.placebox.ktx.lifecycle.bind
-import com.placebox.ktx.type.isNullOrFalse
+import com.moviebase.ktx.lifecycle.bind
+import com.moviebase.ktx.type.isNullOrFalse
 
 typealias ViewProvider = () -> View?
 

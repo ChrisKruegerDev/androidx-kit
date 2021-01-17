@@ -1,7 +1,7 @@
 package com.placebox.androidx.widget.appbar
 
 import android.view.View
-import com.placebox.ktx.content.toPx
+import com.moviebase.ktx.content.toPx
 
 class TranslationAppBarStateChangeListener(private val view: View) : PercentAppBarStateChangeListener() {
 

@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import com.placebox.androidx.lifecycle.SingleLiveEvent
-import com.placebox.ktx.app.showDialogFragment
+import com.moviebase.ktx.app.showDialogFragment
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 
