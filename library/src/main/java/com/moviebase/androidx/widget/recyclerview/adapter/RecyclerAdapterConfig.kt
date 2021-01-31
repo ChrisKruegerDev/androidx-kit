@@ -15,6 +15,11 @@ typealias OnLongClick<T> = (T) -> Unit
 typealias OnSelection<T> = (adapter: RecyclerViewAdapterBase<T>, position: Int, value: T) -> Unit
 typealias ViewHolderFactory<T> = (adapter: RecyclerViewAdapterBase<T>, parent: ViewGroup) -> BindViewHolder<T>?
 
+fun <T> OnClick<T>.and(then: OnClick<T>): OnClick<T> = { value, viewHolder ->
+    this(value, viewHolder)
+    then(value, viewHolder)
+}
+
 private val classViewTypeFactory: (Any?) -> Int = { it?.javaClass?.hashCode() ?: VIEW_TYPE_DEFAULT }
 
 open class RecyclerAdapterConfig<T: Any> {
