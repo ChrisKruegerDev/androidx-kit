@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.moviebase.androidx.widget.recyclerview.adapter.ViewType.VIEW_TYPE_DEFAULT
+import com.moviebase.androidx.widget.recyclerview.diff.ItemDiffCallback
 import com.moviebase.androidx.widget.recyclerview.viewholder.BindViewHolder
 import kotlin.reflect.KClass
 
@@ -33,6 +34,7 @@ open class RecyclerAdapterConfig<T: Any> {
     var footerViewHolderFactory: ViewHolderFactory<T>? = null
     var onViewType: OnViewType? = null
     var onItemId: OnItemId<T>? = null
+    val itemDiffCallback: ItemDiffCallback<T> = ItemDiffCallback()
 
     fun onViewType(onViewType: OnViewType) {
         this.onViewType = onViewType

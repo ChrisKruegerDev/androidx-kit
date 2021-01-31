@@ -92,7 +92,7 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
         else
             newList.filter(predicate).toMutableList()
 
-        val callback = DiffCallback(data, list)
+        val callback = DiffCallback(data, list, config.itemDiffCallback)
         val result = DiffUtil.calculateDiff(callback)
         data = list
         result.dispatchUpdatesTo(this)
