@@ -8,7 +8,7 @@ buildscript {
         maven("https://maven-central-eu.storage-download.googleapis.com/repos/central/data")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0-beta03")
+        classpath("com.android.tools.build:gradle:4.1.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.0.0")
     }
