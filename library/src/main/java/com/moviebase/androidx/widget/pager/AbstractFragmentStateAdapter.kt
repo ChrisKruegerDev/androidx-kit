@@ -3,6 +3,7 @@ package com.moviebase.androidx.widget.pager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.moviebase.androidx.app.FragmentProvider
 
 
 abstract class AbstractFragmentStateAdapter : FragmentStateAdapter {

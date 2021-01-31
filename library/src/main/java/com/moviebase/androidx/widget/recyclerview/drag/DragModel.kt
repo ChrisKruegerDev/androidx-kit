@@ -2,7 +2,7 @@ package com.moviebase.androidx.widget.recyclerview.drag
 
 import androidx.recyclerview.widget.ItemTouchHelper
 
-fun ItemTouchHelper(apply: LambdaItemTouchHelperAdapter.() -> Unit): ItemTouchHelper {
+fun itemTouchHelper(apply: LambdaItemTouchHelperAdapter.() -> Unit): ItemTouchHelper {
     val adapter = LambdaItemTouchHelperAdapter().apply(apply)
     return ItemTouchHelper(SimpleItemTouchHelperCallback(adapter))
 }

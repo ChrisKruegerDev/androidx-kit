@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 class DiffCallback<T : Any>(
         private val oldItems: List<T>,
         private val newItems: List<T>,
-        private val itemDiffCallback: ItemDiffCallback<T>
+        private val itemDiffCallback: DiffUtil.ItemCallback<T>
 ) : DiffUtil.Callback() {
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
