@@ -8,6 +8,9 @@ import java.util.*
 
 typealias ListFilter<T> = (T) -> Boolean
 
+/**
+ * Use ListAdapter if only a list without additional features is necessary.
+ */
 abstract class AbstractListRecyclerAdapter<T : Any>(
     final override val config: RecyclerAdapterConfig<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RecyclerViewAdapterBase<T> {
@@ -54,8 +57,7 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
 
     override fun getItemId(index: Int): Long = helper.getItemId(index)
 
-    override fun getItem(position: Int): T? =
-        if (position < 0 || position >= data.size) null else data[position]
+    override fun getItem(position: Int): T? = data.getOrNull(position)
 
     fun remove(item: T) {
         val i = data.indexOf(item)
