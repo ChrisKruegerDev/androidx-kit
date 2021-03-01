@@ -1,6 +1,5 @@
 package com.moviebase.androidx.widget.recyclerview.viewholder
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +9,7 @@ abstract class BindViewHolder<T : Any>(
     val adapter: RecyclerViewAdapterBase<T>,
     val parent: ViewGroup,
     @LayoutRes resource: Int
-) : LayoutViewHolder(LayoutInflater.from(parent.context).inflate(resource, parent, false)), BindValue<T> {
+) : LayoutViewHolder(parent, resource), BindValue<T> {
 
     var item: T? = null
 
