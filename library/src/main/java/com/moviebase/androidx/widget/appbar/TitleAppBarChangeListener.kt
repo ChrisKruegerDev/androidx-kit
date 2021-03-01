@@ -1,15 +1,16 @@
 package com.moviebase.androidx.widget.appbar
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.appbar.AppBarLayout
 
 class TitleAppBarChangeListener(
     threshold: Int,
-    private val activity: AppCompatActivity,
+    private val toolbar: Toolbar,
     private val title: String
 ) : AppBarStateChangeListener(threshold) {
 
-    override fun onStateChanged(state: State) {
-        activity.supportActionBar?.title = if (state == State.COLLAPSED) title else null
+    override fun onStateChanged(layout: AppBarLayout, state: State) {
+        toolbar.title = if (state.isCollapsed) title else null
     }
 
 }

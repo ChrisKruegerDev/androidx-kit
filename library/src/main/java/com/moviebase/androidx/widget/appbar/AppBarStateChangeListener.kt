@@ -6,7 +6,7 @@ import kotlin.math.abs
 
 inline fun AppBarLayout.doOnStateChanged(threshold: Int, crossinline onStateChanged: (AppBarStateChangeListener.State) -> Unit) {
     val listener = object : AppBarStateChangeListener(threshold) {
-        override fun onStateChanged(state: State) {
+        override fun onStateChanged(layout: AppBarLayout, state: State) {
             onStateChanged(state)
         }
     }
@@ -24,24 +24,28 @@ abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetC
 
         currentState = when {
             i == 0                                 -> {
-                if (currentState != State.EXPANDED) onStateChanged(State.EXPANDED)
+                if (currentState != State.EXPANDED) onStateChanged(layout, State.EXPANDED)
                 State.EXPANDED
             }
             abs(i) >= totalScrollRange + threshold -> {
-                if (currentState != State.COLLAPSED) onStateChanged(State.COLLAPSED)
+                if (currentState != State.COLLAPSED) onStateChanged(layout, State.COLLAPSED)
                 State.COLLAPSED
             }
             else                                   -> {
-                if (currentState != State.IDLE) onStateChanged(State.IDLE)
+                if (currentState != State.IDLE) onStateChanged(layout, State.IDLE)
                 State.IDLE
             }
         }
     }
 
-    abstract fun onStateChanged(state: State)
+    abstract fun onStateChanged(layout: AppBarLayout, state: State)
 
     enum class State {
-        EXPANDED, COLLAPSED, IDLE
+        EXPANDED,
+        COLLAPSED,
+        IDLE;
+
+        val isCollapsed: Boolean get() = this == COLLAPSED
     }
 
 }
