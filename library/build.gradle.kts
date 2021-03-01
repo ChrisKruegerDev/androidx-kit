@@ -9,7 +9,6 @@ plugins {
 repositories {
     gradlePluginPortal()
     google()
-    jcenter()
     mavenCentral()
 }
 
@@ -70,6 +69,10 @@ android {
         isCheckDependencies = true
         isAbortOnError = false
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 androidExtensions {
     isExperimental = true
@@ -79,10 +82,6 @@ val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
     from(android.sourceSets.getByName("main").java.srcDirs)
 }
-
-//artifacts {
-//    add("archives", sourcesJar)
-//}
 
 afterEvaluate {
     publishing {
