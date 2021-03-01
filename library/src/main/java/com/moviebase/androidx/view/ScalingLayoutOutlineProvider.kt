@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import com.moviebase.ktx.content.toPx
 
-fun ImageOutlineProvider(resources: Resources): ViewOutlineProvider {
-    val radius = 8.toPx(resources).toFloat()
+fun imageOutlineProvider(dp: Int): ViewOutlineProvider {
+    val radius = dp.px.toFloat()
     return ScalingLayoutOutlineProvider(radius)
 }
-
-fun ImageOutlineProvider(view: View): ViewOutlineProvider = ImageOutlineProvider(view.resources)
-fun ImageOutlineProvider(context: Context): ViewOutlineProvider = ImageOutlineProvider(context.resources)
 
 class ScalingLayoutOutlineProvider(private val radius: Float) : ViewOutlineProvider() {
 
