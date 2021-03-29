@@ -104,7 +104,7 @@ afterEvaluate {
             create<MavenPublication>("mavenJava") {
                 groupId = "com.moviebase"
                 artifactId = "android-elements"
-                version = "$version_major.$version_minor.$version_patch"
+                version = Versions.versionName
                 artifact(sourcesJar)
                 from(components.getByName("release"))
 

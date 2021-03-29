@@ -5,21 +5,9 @@ plugins {
     id("kotlin-kapt")
 }
 
-repositories {
-    gradlePluginPortal()
-    google()
-    jcenter()
-    mavenCentral()
-}
-
-val version_major: String by project
-val version_minor: String by project
-val version_patch: String by project
-val kotlin_version: String by project
-
 android {
-    compileSdkVersion(30)
-    buildToolsVersion = "30.0.2"
+    compileSdkVersion(Versions.compileSdk)
+    buildToolsVersion = Versions.buildTools
     defaultConfig {
         minSdkVersion(23)
         targetSdkVersion(30)
@@ -60,8 +48,9 @@ androidExtensions {
 
 dependencies {
     implementation (project(":library"))
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
-    implementation ("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+    implementation(Libs.Kotlin.kotlin)
+    implementation(Libs.Kotlin.kotlinReflect)
+
     implementation ("androidx.appcompat:appcompat:1.2.0")
     implementation ("androidx.recyclerview:recyclerview:1.1.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
