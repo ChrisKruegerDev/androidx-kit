@@ -1,33 +1,43 @@
+plugins {
+    id("io.github.gradle-nexus.publish-plugin") version Versions.nexus
+}
+
 buildscript {
-    val kotlin_version: String by extra
     repositories {
         gradlePluginPortal()
         google()
-        jcenter()
-        maven("https://kotlin.bintray.com/kotlinx")
-        maven("https://maven-central-eu.storage-download.googleapis.com/repos/central/data")
+        mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
-        classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.0.0")
+        classpath(kotlin("gradle-plugin", Versions.kotlin))
+        classpath(Libs.androidGradle)
+        classpath(Libs.androidJunit)
+        classpath(Libs.dokka)
     }
 }
 
-val version_major: String by extra
-val version_minor: String by extra
-val version_patch: String by extra
 
-group = "com.moviebase"
-version = "$version_major.$version_minor.$version_patch"
+group = "app.moviebase"
+version = Versions.versionName
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(findProperty("SONATYPE_USER") as String?)
+            password.set(findProperty("SONATYPE_PASSWORD") as String?)
+            stagingProfileId.set(findProperty("SONATYPE_STAGING_PROFILE_ID") as String?)
+        }
+    }
+}
 
 allprojects {
     repositories {
-        maven("${System.getenv("HOME")}/.m2/repository")
-        maven("https://maven-central-eu.storage-download.googleapis.com/repos/central/data")
-        maven("https://jitpack.io")
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
-        maven("https://dl.bintray.com/moviebase/maven")
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        mavenLocal()
     }
 }
 

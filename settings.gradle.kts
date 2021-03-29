@@ -1,11 +1,12 @@
 pluginManagement {
     repositories {
-        maven { setUrl("https://kotlin.bintray.com/kotlinx") }
+        gradlePluginPortal()
+        google()
         mavenCentral()
-        maven { setUrl("https://plugins.gradle.org/m2/") }
     }
 }
 
 rootProject.name="android-elements"
+
 include(":library")
 include(":sample")

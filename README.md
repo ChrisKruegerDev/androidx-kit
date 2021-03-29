@@ -1,5 +1,5 @@
 # Android Elements
-[ ![Download](https://api.bintray.com/packages/moviebase/maven/android-elements/images/download.svg?version=1.3.0) ](https://bintray.com/moviebase/maven/android-elements/1.3.0/link)
+[ ![Download](https://api.bintray.com/packages/moviebase/maven/android-elements/images/download.svg?version=1.3.0) ](https://bintray.app.moviebase.maven/android-elements/1.3.0/link)
 
 Android Elements is an additional improvement to the [AndroidX](https://developer.android.com/jetpack/androidx) library. It provides features for an easier use of user interface components.
 
@@ -7,12 +7,8 @@ Android Elements is an additional improvement to the [AndroidX](https://develope
 Use gradle for download the latest version:
 
 ```
-repositories {
-  maven { url  "https://dl.bintray.com/moviebase/maven" }
-}
-
 dependencies {
-  implementation 'com.moviebase:android-elements:1.3.0'
+  implementation 'app.moviebase.android-elements:1.3.0'
 }
 ```
 

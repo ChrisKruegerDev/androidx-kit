@@ -9,11 +9,11 @@ android {
     compileSdkVersion(Versions.compileSdk)
     buildToolsVersion = Versions.buildTools
     defaultConfig {
-        minSdkVersion(23)
-        targetSdkVersion(30)
-        versionCode = version_major.toInt() * 1000 + version_minor.toInt() * 100 + version_patch.toInt() * 10
-        versionName = "$version_major.$version_minor.$version_patch"
-        applicationId = "com.moviebase.androidx.sample"
+        minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
+        applicationId = "app.moviebase.androidx.sample"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -48,11 +48,12 @@ androidExtensions {
 
 dependencies {
     implementation (project(":library"))
+
     implementation(Libs.Kotlin.kotlin)
     implementation(Libs.Kotlin.kotlinReflect)
 
-    implementation ("androidx.appcompat:appcompat:1.2.0")
-    implementation ("androidx.recyclerview:recyclerview:1.1.0")
-    implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation ("com.google.android.material:material:1.3.0-rc01")
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.recyclerView)
+    implementation(Libs.AndroidX.constraintLayout)
+    implementation(Libs.Google.material)
 }
