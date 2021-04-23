@@ -10,9 +10,9 @@ buildscript {
     }
     dependencies {
         classpath(kotlin("gradle-plugin", Versions.kotlin))
-        classpath(Libs.androidGradle)
-        classpath(Libs.androidJunit)
-        classpath(Libs.dokka)
+        classpath(Plugins.androidGradle)
+        classpath(Plugins.androidJunit)
+        classpath(Plugins.dokka)
     }
 }
 

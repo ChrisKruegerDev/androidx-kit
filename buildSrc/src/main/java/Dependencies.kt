@@ -1,12 +1,12 @@
 object Versions {
     val versionMajor = 1
     val versionMinor = 6
-    val versionPatch = 0
+    val versionPatch = 1
 
     val versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
     val versionName = "$versionMajor.$versionMinor.$versionPatch"
 
-    val minSdk = 24
+    val minSdk = 21
     val targetSdk = 30
     val compileSdk = 30
     val buildTools = "30.0.2"
@@ -18,7 +18,7 @@ object Versions {
     val nexus = "1.0.0"
 
     // Kotlin
-    val kotlin = "1.4.31"
+    val kotlin = "1.5.0-RC"
     val coroutines = "1.4.3"
     val kotlinxDatetime = "0.1.1"
     val ktor = "1.5.2"
@@ -50,11 +50,13 @@ object Versions {
 
 }
 
-object Libs {
-
+object Plugins {
     val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
     val androidJunit = "de.mannodermaus.gradle.plugins:android-junit5:${Versions.androidJunit}"
     val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
+}
+
+object Libs {
 
     object Kotlin {
         val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
@@ -150,7 +152,7 @@ object Libs {
         val threeTenAbpAndroid = "com.jakewharton.threetenabp:threetenabp:1.3.0"
         val inject = "javax.inject:javax.inject:1"
 
-        val androidKtx = "app.moviebase:android-ktx:1.3.3"
+        val androidKtx = "app.moviebase:android-ktx:1.3.4"
         val androidElements = "app.moviebase:android-elements:1.6.0"
     }
 

@@ -56,4 +56,5 @@ dependencies {
     implementation(Libs.AndroidX.recyclerView)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.Google.material)
+    implementation(Libs.Ui.glideRecyclerView)
 }

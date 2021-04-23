@@ -6,7 +6,7 @@ pluginManagement {
     }
 }
 
-rootProject.name="android-elements"
+rootProject.name = "android-elements"
 
 include(":library")
 include(":sample")
