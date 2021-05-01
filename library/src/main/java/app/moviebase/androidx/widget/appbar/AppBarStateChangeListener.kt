@@ -18,6 +18,10 @@ abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetC
     private var currentState = State.IDLE
     private var totalScrollRange = -1
 
+    init {
+        require(threshold >= 0) { "threshold must be 0 or higher: $threshold" }
+    }
+
     override fun onOffsetChanged(layout: AppBarLayout, i: Int) {
         if (totalScrollRange == -1)
             totalScrollRange = layout.totalScrollRange
@@ -27,7 +31,7 @@ abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetC
                 if (currentState != State.EXPANDED) onStateChanged(layout, State.EXPANDED)
                 State.EXPANDED
             }
-            abs(i) >= totalScrollRange + threshold -> {
+            abs(i) >= totalScrollRange - threshold -> {
                 if (currentState != State.COLLAPSED) onStateChanged(layout, State.COLLAPSED)
                 State.COLLAPSED
             }

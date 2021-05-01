@@ -12,7 +12,7 @@ import app.moviebase.androidx.R
 const val ORIENTATION_HORIZONTAL = 0
 const val ORIENTATION_VERTICAL = 1
 
-class DividerView @JvmOverloads constructor(
+public class DividerView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
