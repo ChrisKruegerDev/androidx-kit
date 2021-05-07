@@ -4,14 +4,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import kotlin.math.abs
 
-inline fun AppBarLayout.doOnStateChanged(threshold: Int, crossinline onStateChanged: (AppBarStateChangeListener.State) -> Unit) {
-    val listener = object : AppBarStateChangeListener(threshold) {
-        override fun onStateChanged(layout: AppBarLayout, state: State) {
-            onStateChanged(state)
-        }
-    }
-    addOnOffsetChangedListener(listener)
-}
+
 
 abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetChangedListener {
 

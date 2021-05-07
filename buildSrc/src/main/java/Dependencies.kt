@@ -1,7 +1,7 @@
 object Versions {
     val versionMajor = 1
     val versionMinor = 6
-    val versionPatch = 1
+    val versionPatch = 2
 
     val versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
     val versionName = "$versionMajor.$versionMinor.$versionPatch"
@@ -9,7 +9,7 @@ object Versions {
     val minSdk = 21
     val targetSdk = 30
     val compileSdk = 30
-    val buildTools = "30.0.2"
+    val buildTools = "30.0.3"
 
     // Plugins
     val androidGradle = "4.1.3"
@@ -80,7 +80,7 @@ object Libs {
         val preference = "androidx.preference:preference:${Versions.preference}"
         val preferenceKtx = "androidx.preference:preference-ktx:${Versions.preference}"
         val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-        val coreKtx = "androidx.core:core-ktx:1.3.1"
+        val coreKtx = "androidx.core:core-ktx:1.6.0-alpha02"
         val paging = "androidx.paging:paging-runtime:2.1.2"
         val pagingKtx = "androidx.paging:paging-runtime-ktx:2.1.2"
         val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.0-rc02"
