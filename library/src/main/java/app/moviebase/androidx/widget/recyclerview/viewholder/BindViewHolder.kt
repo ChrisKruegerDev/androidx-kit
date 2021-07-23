@@ -22,7 +22,7 @@ abstract class BindViewHolder<T : Any>(
         if (onClick != null || onSelection != null)
             itemView.setOnClickListener {
                 if (onClick != null)
-                    item?.let { onClick(it, this) }
+                    item?.let { onClick.click(it, this) }
 
                 if (onSelection != null)
                     item?.let {
@@ -35,8 +35,8 @@ abstract class BindViewHolder<T : Any>(
             }
 
         if (onLongClick != null)
-            itemView.setOnLongClickListener {
-                item?.run(onLongClick)
+            itemView.setOnLongClickListener { _ ->
+                item?.let { onLongClick.click(it) }
                 item != null
             }
     }

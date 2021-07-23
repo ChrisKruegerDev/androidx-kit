@@ -4,9 +4,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.viewholder.BindValue
 
-interface RecyclerViewAdapterBase<T : Any> {
 
-    val config: RecyclerAdapterConfig<T>
+interface RecyclerViewAdapterBase<T : Any>: ItemAdapter<T> {
+
+    override val config: RecyclerAdapterConfig<T>
     val isDataValid: Boolean
     val data: List<T>?
     val selection: Selection
@@ -37,8 +38,6 @@ interface RecyclerViewAdapterBase<T : Any> {
     fun useHeader(): Boolean = config.headerViewHolderFactory != null
 
     fun useFooter(): Boolean = config.footerViewHolderFactory != null
-
-    fun getItemCount(): Int
 
     fun getItem(position: Int): T?
 

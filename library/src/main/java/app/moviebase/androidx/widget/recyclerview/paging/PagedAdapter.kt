@@ -5,7 +5,6 @@ import android.widget.LinearLayout
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.ListPreloader
 import app.moviebase.androidx.widget.recyclerview.adapter.*
 import app.moviebase.androidx.widget.recyclerview.adapter.list.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.adapter.list.GlideRecyclerAdapter
@@ -25,7 +24,7 @@ class PagedAdapter<T : Any>(
     override val config: RecyclerAdapterConfig<T>,
     override val glideConfig: GlideConfig<T>,
     diffCallback: DiffUtil.ItemCallback<T>
-) : PagedListAdapter<T, RecyclerView.ViewHolder>(diffCallback), ListPreloader.PreloadModelProvider<T>, RecyclerViewAdapterBase<T>, GlideRecyclerAdapter<T> {
+) : PagedListAdapter<T, RecyclerView.ViewHolder>(diffCallback), RecyclerViewAdapterBase<T>, GlideRecyclerAdapter<T> {
 
     override val selection: Selection = Selection(this)
     override val isDataValid: Boolean get() = currentList != null

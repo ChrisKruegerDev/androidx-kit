@@ -3,22 +3,12 @@ package app.moviebase.androidx.widget.recyclerview.adapter.list
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.ListPreloader
-import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.RequestManager
-import com.bumptech.glide.util.ViewPreloadSizeProvider
+import app.moviebase.androidx.widget.recyclerview.adapter.GlideItemAdapter
 import app.moviebase.androidx.widget.recyclerview.adapter.RecyclerViewAdapterBase
 import app.moviebase.androidx.widget.recyclerview.viewholder.ImageViewHolder
+import com.bumptech.glide.RequestBuilder
 
-interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, ListPreloader.PreloadModelProvider<T> {
-
-    val glideConfig: GlideConfig<T>
-
-    val preloadProvider: ViewPreloadSizeProvider<T>
-        get() = glideConfig.preloadProvider
-
-    val requests: RequestManager
-        get() = glideConfig.loader?.requests ?: throw IllegalStateException("no glide loader available")
+interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, GlideItemAdapter<T> {
 
     override fun onCreate(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? {
         val holder = super.onCreate(parent, viewType)

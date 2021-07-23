@@ -22,6 +22,8 @@ dependencies {
     implementation(Libs.AndroidX.browser)
     implementation(Libs.AndroidX.paging)
     implementation(Libs.AndroidX.pagingKtx)
+    implementation(Libs.AndroidX.paging3)
+    implementation(Libs.AndroidX.pagingKtx3)
 
     implementation(Libs.Google.material)
 

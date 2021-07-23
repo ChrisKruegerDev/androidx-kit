@@ -34,6 +34,7 @@ object Versions {
     val navigation = "2.3.3"
     val recyclerView = "1.2.0-beta01"
     val swipeRefreshLayout = "1.1.0"
+    val paging3 = "3.1.0-alpha02"
 
     // Google
     val material = "1.3.0"
@@ -83,6 +84,8 @@ object Libs {
         val coreKtx = "androidx.core:core-ktx:1.6.0-alpha02"
         val paging = "androidx.paging:paging-runtime:2.1.2"
         val pagingKtx = "androidx.paging:paging-runtime-ktx:2.1.2"
+        val paging3 = "androidx.paging:paging-runtime:${Versions.paging3}"
+        val pagingKtx3 = "androidx.paging:paging-runtime-ktx:${Versions.paging3}"
         val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.0-rc02"
         val activityKtx = "androidx.activity:activity-ktx:1.2.0-rc01"
         val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"

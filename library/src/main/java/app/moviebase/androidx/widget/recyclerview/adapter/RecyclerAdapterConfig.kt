@@ -4,31 +4,21 @@ package app.moviebase.androidx.widget.recyclerview.adapter
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.adapter.ViewType.VIEW_TYPE_DEFAULT
 import app.moviebase.androidx.widget.recyclerview.diff.ItemDiffCallback
 import app.moviebase.androidx.widget.recyclerview.viewholder.BindViewHolder
 import kotlin.reflect.KClass
 
-typealias OnViewType = (Any?) -> Int
-typealias OnItemId<T> = (T) -> Long
-typealias OnClick<T> = (T, RecyclerView.ViewHolder) -> Unit
-typealias OnLongClick<T> = (T) -> Unit
 typealias OnSelection<T> = (adapter: RecyclerViewAdapterBase<T>, position: Int, value: T) -> Unit
 typealias ViewHolderFactory<T> = (adapter: RecyclerViewAdapterBase<T>, parent: ViewGroup) -> BindViewHolder<T>?
 
-fun <T> OnClick<T>.and(then: OnClick<T>): OnClick<T> = { value, viewHolder ->
-    this(value, viewHolder)
-    then(value, viewHolder)
-}
+private val classViewTypeFactory: (Any?) -> Int = { it?.javaClass?.hashCode() ?: ViewType.VIEW_TYPE_DEFAULT }
 
-private val classViewTypeFactory: (Any?) -> Int = { it?.javaClass?.hashCode() ?: VIEW_TYPE_DEFAULT }
-
-open class RecyclerAdapterConfig<T: Any> {
+open class RecyclerAdapterConfig<T: Any> : ItemAdapterConfig<T> {
 
     var orientation = LinearLayout.VERTICAL
-    var onClick: OnClick<T>? = null
-    var onLongClick: OnLongClick<T>? = null
+    override var onClick: OnClick<T>? = null
+    override var onLongClick: OnLongClick<T>? = null
     var onSelection: OnSelection<T>? = null
     val viewHolderFactories = mutableMapOf<Int, ViewHolderFactory<T>>()
     var headerViewHolderFactory: ViewHolderFactory<T>? = null
@@ -46,7 +36,7 @@ open class RecyclerAdapterConfig<T: Any> {
     }
 
     fun onClick(onClick: (T) -> Unit) {
-        this.onClick = { value, _ -> onClick(value) }
+        this.onClick = OnClick { value, _ -> onClick(value) }
     }
 
     fun onItemId(onItemId: OnItemId<T>) {
