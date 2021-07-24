@@ -9,7 +9,7 @@ interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, GlideItemA
 
     override fun onCreate(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? {
         val holder = super.onCreate(parent, viewType)
-        GlideAdapterHelper.updateView(glideConfig, holder)
+        GlideAdapterHelper.updateImageView(glideConfig, holder)
         return holder
     }
 
@@ -20,6 +20,6 @@ interface GlideRecyclerAdapter<T : Any> : RecyclerViewAdapterBase<T>, GlideItemA
 
     override fun onClear(holder: RecyclerView.ViewHolder) {
         super.onClear(holder)
-        GlideAdapterHelper.clearView(glideConfig, holder)
+        GlideAdapterHelper.clearImageView(glideConfig, holder)
     }
 }

@@ -1,12 +1,11 @@
 package app.moviebase.androidx.widget.recyclerview.paging3
 
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.DiffUtil
 import app.moviebase.androidx.widget.recyclerview.adapter.*
+import app.moviebase.androidx.widget.recyclerview.diff.ItemDiffCallback
 import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideViewLoader
-import app.moviebase.androidx.widget.recyclerview.diff.ItemDiffCallback
 import app.moviebase.androidx.widget.recyclerview.viewholder.ItemViewHolder
 import kotlin.reflect.KClass
 
@@ -20,16 +19,12 @@ fun interface LoadStateViewHolderBuilder {
 
 class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
 
-    var orientation = LinearLayout.VERTICAL
-
-    var onViewType: OnViewType? = null
-    var onItemId: OnItemId<T>? = null
-
     override var onClickListener: OnClickListener<T>? = null
     override var onLongClickListener: OnLongClickListener<T>? = null
 
+    var onViewType: OnViewType = DefaultOnViewType()
     val viewHolders = mutableMapOf<Int, ViewHolderBuilder<T>>()
-    var loadStateViewHolder: LoadStateViewHolderBuilder? = null
+    lateinit var loadStateViewHolder: LoadStateViewHolderBuilder
 
     var diffCallback: DiffUtil.ItemCallback<T> = ItemDiffCallback()
 
@@ -45,11 +40,11 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
     }
 
     fun onClick(onClick: (T) -> Unit) {
-        this.onClickListener = OnClickListener { value, _ -> onClick(value) }
+        onClickListener = OnClickListener { value, _ -> onClick(value) }
     }
 
-    fun onItemId(onItemId: OnItemId<T>) {
-        this.onItemId = onItemId
+    fun onLonClick(onClick: (T) -> Unit) {
+        onLongClickListener = OnLongClickListener { value -> onClick(value) }
     }
 
     fun viewHolder(builder: ViewHolderBuilder<T>) {
@@ -61,7 +56,7 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
     }
 
     fun viewHolder(viewType: KClass<out T>, builder: ViewHolderBuilder<T>) {
-        onViewType = ClassViewType()
+        onViewType = ClassOnViewType()
         viewHolders[viewType.java.hashCode()] = builder
     }
 

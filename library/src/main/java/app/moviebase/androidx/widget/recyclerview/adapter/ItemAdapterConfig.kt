@@ -25,7 +25,13 @@ fun interface OnViewType {
     fun getViewType(value: Any?): Int
 }
 
-class ClassViewType: OnViewType {
+class DefaultOnViewType: OnViewType {
+    override fun getViewType(value: Any?): Int {
+        return ViewType.VIEW_TYPE_DEFAULT
+    }
+}
+
+class ClassOnViewType: OnViewType {
     override fun getViewType(value: Any?): Int {
         return value?.javaClass?.hashCode() ?: ViewType.VIEW_TYPE_DEFAULT
     }

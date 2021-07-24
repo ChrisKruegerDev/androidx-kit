@@ -5,7 +5,7 @@ import app.moviebase.androidx.widget.recyclerview.viewholder.ImageViewHolder
 
 object GlideAdapterHelper {
 
-    fun updateView(glideConfig: GlideConfig<*>, holder: RecyclerView.ViewHolder?) {
+    fun updateImageView(glideConfig: GlideConfig<*>, holder: RecyclerView.ViewHolder?) {
         if (holder is ImageViewHolder)
             glideConfig.preloadProvider.setView(holder.imageView)
     }
@@ -25,7 +25,7 @@ object GlideAdapterHelper {
         }
     }
 
-    fun clearView(glideConfig: GlideConfig<*>, holder: RecyclerView.ViewHolder?) {
+    fun clearImageView(glideConfig: GlideConfig<*>, holder: RecyclerView.ViewHolder?) {
         if (holder is ImageViewHolder) {
             val imageView = holder.imageView
             glideConfig.loader?.clearGlide(imageView)

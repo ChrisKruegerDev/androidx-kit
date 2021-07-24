@@ -54,7 +54,7 @@ open class RecyclerAdapterConfig<T: Any> : ItemAdapterConfig<T> {
     }
 
     fun viewHolder(viewType: KClass<out T>, factory: ViewHolderFactory<T>) {
-        onViewType = ClassViewType()
+        onViewType = ClassOnViewType()
         viewHolderFactories[viewType.java.hashCode()] = factory
     }
 

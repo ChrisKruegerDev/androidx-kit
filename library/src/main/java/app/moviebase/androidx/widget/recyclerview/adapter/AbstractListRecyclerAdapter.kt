@@ -59,6 +59,8 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
 
     override fun getItemId(index: Int): Long = helper.getItemId(index)
 
+    override fun getItemBy(position: Int): T? = getItem(position)
+
     override fun getItem(position: Int): T? = data.getOrNull(position)
 
     fun remove(item: T) {
