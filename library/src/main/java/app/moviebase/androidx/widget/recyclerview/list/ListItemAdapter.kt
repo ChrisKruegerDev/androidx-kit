@@ -1,25 +1,22 @@
-package app.moviebase.androidx.widget.recyclerview.paging3
+package app.moviebase.androidx.widget.recyclerview.list
 
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.ListAdapter
 import app.moviebase.androidx.widget.recyclerview.glide.GlideAdapterHelper
 import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideItemAdapter
 import app.moviebase.androidx.widget.recyclerview.viewholder.ItemViewHolder
 import app.moviebase.androidx.widget.recyclerview.viewholder.Recyclable
 
-class PagingAdapter<T : Any>(
-    override val config: PagingAdapterConfig<T>,
-) : PagingDataAdapter<T, ItemViewHolder<T>>(config.diffCallback), GlideItemAdapter<T> {
+
+class ListItemAdapter<T : Any>(
+    override val config: ListItemAdapterConfig<T>
+) : ListAdapter<T, ItemViewHolder<T>>(config.diffCallback), GlideItemAdapter<T> {
 
     override val glideConfig: GlideConfig<T> get() = config.glideConfig
 
-    fun withLoadStateFooter(): ConcatAdapter {
-        val viewHolderFactory = config.loadStateViewHolder
-        return withLoadStateFooter(
-            footer = LoadStateAdapter(this, viewHolderFactory)
-        )
+    init {
+        setHasStableIds(true)
     }
 
     override fun getItemBy(position: Int): T? = getItem(position)

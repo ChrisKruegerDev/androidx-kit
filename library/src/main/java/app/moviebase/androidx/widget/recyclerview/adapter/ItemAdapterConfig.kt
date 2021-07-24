@@ -1,10 +1,16 @@
 package app.moviebase.androidx.widget.recyclerview.adapter
 
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import app.moviebase.androidx.widget.recyclerview.viewholder.ItemViewHolder
 
 interface ItemAdapterConfig<T> {
     var onClickListener: OnClickListener<T>?
     var onLongClickListener: OnLongClickListener<T>?
+}
+
+fun interface ViewHolderBuilder<T : Any> {
+    fun create(adapter: ItemAdapter<T>, parent: ViewGroup): ItemViewHolder<T>
 }
 
 fun interface OnClickListener<T> {

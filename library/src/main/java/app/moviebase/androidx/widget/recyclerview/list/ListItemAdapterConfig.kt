@@ -1,4 +1,4 @@
-package app.moviebase.androidx.widget.recyclerview.paging3
+package app.moviebase.androidx.widget.recyclerview.list
 
 import androidx.recyclerview.widget.DiffUtil
 import app.moviebase.androidx.widget.recyclerview.adapter.*
@@ -7,14 +7,14 @@ import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideViewLoader
 import kotlin.reflect.KClass
 
-class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
+class ListItemAdapterConfig<T : Any> : ItemAdapterConfig<T> {
 
     override var onClickListener: OnClickListener<T>? = null
     override var onLongClickListener: OnLongClickListener<T>? = null
 
     var onViewType: OnViewType = DefaultOnViewType()
+    var onItemId: OnItemId<T> = OnValueHashCode()
     val viewHolders = mutableMapOf<Int, ViewHolderBuilder<T>>()
-    lateinit var loadStateViewHolder: LoadStateViewHolderBuilder
 
     var diffCallback: DiffUtil.ItemCallback<T> = ItemDiffCallback()
 
@@ -27,6 +27,10 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
 
     fun onViewType(onViewType: OnViewType) {
         this.onViewType = onViewType
+    }
+
+    fun onItemId(onItemId: OnItemId<T>) {
+        this.onItemId = onItemId
     }
 
     fun onClick(onClick: (T) -> Unit) {
@@ -48,9 +52,5 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
     fun viewHolder(viewType: KClass<out T>, builder: ViewHolderBuilder<T>) {
         onViewType = ClassOnViewType()
         viewHolders[viewType.java.hashCode()] = builder
-    }
-
-    fun loadStateViewHolder(builder: LoadStateViewHolderBuilder) {
-        loadStateViewHolder = builder
     }
 }
