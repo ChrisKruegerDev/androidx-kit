@@ -15,8 +15,8 @@ abstract class BindViewHolder<T : Any>(
 
     init {
         val config = adapter.config
-        val onClick = config.onClick
-        val onLongClick = config.onLongClick
+        val onClick = config.onClickListener
+        val onLongClick = config.onLongClickListener
         val onSelection = config.onSelection
 
         if (onClick != null || onSelection != null)

@@ -53,7 +53,7 @@ class RecyclerAdapterHelper<T : Any>(
 
         if (newIndex in 0 until dataSize) {
             val item = adapter.getItem(newIndex) ?: return RecyclerView.NO_ID
-            return config.onItemId?.invoke(item) ?: RecyclerView.NO_ID
+            return config.onItemId?.getItemId(item) ?: RecyclerView.NO_ID
         } else {
             return RecyclerView.NO_ID
         }
@@ -114,6 +114,6 @@ class RecyclerAdapterHelper<T : Any>(
     private fun onItemViewType(position: Int): Int {
         val onViewType = config.onViewType ?: return ViewType.VIEW_TYPE_DEFAULT
         val item = getItem(position)
-        return onViewType(item)
+        return onViewType.getViewType(item)
     }
 }

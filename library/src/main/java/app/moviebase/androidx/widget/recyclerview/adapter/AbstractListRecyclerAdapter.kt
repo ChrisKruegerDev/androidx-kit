@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.diff.DiffCallback
 import java.util.*
 
+@Deprecated("only used for AbstractListRecyclerAdapter")
 typealias ListFilter<T> = (T) -> Boolean
 
-/**
- * Use ListAdapter if only a list without additional features is necessary.
- */
+@Deprecated(
+    "use the native solution with ListAdapter",
+    ReplaceWith("ListAdapter", "app.moviebase.androidx.widget.recyclerview.adapter.ListAdapter")
+)
 abstract class AbstractListRecyclerAdapter<T : Any>(
     final override val config: RecyclerAdapterConfig<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RecyclerViewAdapterBase<T> {

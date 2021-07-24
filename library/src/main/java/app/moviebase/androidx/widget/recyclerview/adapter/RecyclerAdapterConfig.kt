@@ -12,13 +12,11 @@ import kotlin.reflect.KClass
 typealias OnSelection<T> = (adapter: RecyclerViewAdapterBase<T>, position: Int, value: T) -> Unit
 typealias ViewHolderFactory<T> = (adapter: RecyclerViewAdapterBase<T>, parent: ViewGroup) -> BindViewHolder<T>?
 
-private val classViewTypeFactory: (Any?) -> Int = { it?.javaClass?.hashCode() ?: ViewType.VIEW_TYPE_DEFAULT }
-
 open class RecyclerAdapterConfig<T: Any> : ItemAdapterConfig<T> {
 
     var orientation = LinearLayout.VERTICAL
-    override var onClick: OnClick<T>? = null
-    override var onLongClick: OnLongClick<T>? = null
+    override var onClickListener: OnClickListener<T>? = null
+    override var onLongClickListener: OnLongClickListener<T>? = null
     var onSelection: OnSelection<T>? = null
     val viewHolderFactories = mutableMapOf<Int, ViewHolderFactory<T>>()
     var headerViewHolderFactory: ViewHolderFactory<T>? = null
@@ -36,15 +34,15 @@ open class RecyclerAdapterConfig<T: Any> : ItemAdapterConfig<T> {
     }
 
     fun onClick(onClick: (T) -> Unit) {
-        this.onClick = OnClick { value, _ -> onClick(value) }
+        this.onClickListener = OnClickListener { value, _ -> onClick(value) }
     }
 
     fun onItemId(onItemId: OnItemId<T>) {
         this.onItemId = onItemId
     }
 
-    fun onLongClick(onLongClick: OnLongClick<T>) {
-        this.onLongClick = onLongClick
+    fun onLongClick(onLongClickListener: OnLongClickListener<T>) {
+        this.onLongClickListener = onLongClickListener
     }
 
     fun viewHolder(factory: ViewHolderFactory<T>) {
@@ -56,7 +54,7 @@ open class RecyclerAdapterConfig<T: Any> : ItemAdapterConfig<T> {
     }
 
     fun viewHolder(viewType: KClass<out T>, factory: ViewHolderFactory<T>) {
-        onViewType = classViewTypeFactory
+        onViewType = ClassViewType()
         viewHolderFactories[viewType.java.hashCode()] = factory
     }
 

@@ -3,7 +3,7 @@ package app.moviebase.androidx.sample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import app.moviebase.androidx.widget.recyclerview.adapter.list.recyclerViewAdapter
+import app.moviebase.androidx.widget.recyclerview.adapter.recyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

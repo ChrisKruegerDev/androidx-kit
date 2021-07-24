@@ -1,4 +1,4 @@
-package app.moviebase.androidx.widget.recyclerview.adapter.list
+package app.moviebase.androidx.widget.recyclerview.glide
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

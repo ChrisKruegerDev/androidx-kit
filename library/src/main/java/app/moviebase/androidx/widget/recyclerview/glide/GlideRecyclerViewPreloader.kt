@@ -1,7 +1,6 @@
-package app.moviebase.androidx.widget.recyclerview.adapter.list
+package app.moviebase.androidx.widget.recyclerview.glide
 
 import androidx.recyclerview.widget.RecyclerView
-import app.moviebase.androidx.widget.recyclerview.adapter.GlideItemAdapter
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
 
 fun <T : Any> RecyclerView.addOnViewPreload(adapter: GlideItemAdapter<T>, maxPreload: Int) {

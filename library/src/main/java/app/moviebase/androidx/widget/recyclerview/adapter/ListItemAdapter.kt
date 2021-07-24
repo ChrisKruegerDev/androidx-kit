@@ -1,26 +1,28 @@
-package app.moviebase.androidx.widget.recyclerview.adapter.list
+package app.moviebase.androidx.widget.recyclerview.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import app.moviebase.androidx.widget.recyclerview.adapter.*
+import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
+import app.moviebase.androidx.widget.recyclerview.glide.GlideRecyclerAdapter
+import app.moviebase.androidx.widget.recyclerview.glide.GlideRecyclerAdapterConfig
 
-fun <T : Any> lazyListAdapter(block: GlideRecyclerAdapterConfig<T>.() -> Unit) = lazy {
+fun <T : Any> lazyListItemAdapter(block: GlideRecyclerAdapterConfig<T>.() -> Unit) = lazy {
     listAdapter<T>(block)
 }
 
-fun <T : Any> listAdapter(block: GlideRecyclerAdapterConfig<T>.() -> Unit): ListAdapter<T> {
+fun <T : Any> listItemAdapter(block: GlideRecyclerAdapterConfig<T>.() -> Unit): ListItemAdapter<T> {
     val config = GlideRecyclerAdapterConfig<T>().apply(block)
 
     if (config.viewHolderFactories.isEmpty())
         throw IllegalStateException("no view holder factories available")
 
-    return ListAdapter(config, config.glideConfig)
+    return ListItemAdapter(config, config.glideConfig)
 }
 
-class ListAdapter<T : Any>(
+class ListItemAdapter<T : Any>(
     override val config: RecyclerAdapterConfig<T>,
     override val glideConfig: GlideConfig<T>
-) : androidx.recyclerview.widget.ListAdapter<T, RecyclerView.ViewHolder>(config.itemDiffCallback),
+) : ListAdapter<T, RecyclerView.ViewHolder>(config.itemDiffCallback),
     RecyclerViewAdapterBase<T>,
     GlideRecyclerAdapter<T> {
 
@@ -48,6 +50,8 @@ class ListAdapter<T : Any>(
         super.onViewRecycled(holder)
         helper.onViewRecycled(holder)
     }
+
+    override fun getItemBy(position: Int): T? = super.getItem(position)
 
     override fun getItem(position: Int): T? = super.getItem(position)
 

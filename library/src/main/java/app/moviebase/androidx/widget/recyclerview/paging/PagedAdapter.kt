@@ -6,9 +6,9 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.adapter.*
-import app.moviebase.androidx.widget.recyclerview.adapter.list.GlideConfig
-import app.moviebase.androidx.widget.recyclerview.adapter.list.GlideRecyclerAdapter
-import app.moviebase.androidx.widget.recyclerview.adapter.list.GlideRecyclerAdapterConfig
+import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
+import app.moviebase.androidx.widget.recyclerview.glide.GlideRecyclerAdapter
+import app.moviebase.androidx.widget.recyclerview.glide.GlideRecyclerAdapterConfig
 
 fun <T : Any> lazyPagedAdapter(block: GlideRecyclerAdapterConfig<T>.() -> Unit) = lazy { pagedAdapter(block) }
 
@@ -63,6 +63,8 @@ class PagedAdapter<T : Any>(
     override fun getItemViewType(position: Int): Int = helper.getItemViewType(position)
 
     override fun getItemId(index: Int): Long = helper.getItemId(index)
+
+    override fun getItemBy(position: Int): T? = super.getItem(position)
 
     override fun getItem(position: Int): T? = super.getItem(position)
 

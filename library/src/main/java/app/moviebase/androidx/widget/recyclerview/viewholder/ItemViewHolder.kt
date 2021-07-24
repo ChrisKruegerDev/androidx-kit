@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.adapter.ItemAdapter
 
 abstract class ItemViewHolder<T : Any>(
-    val adapter: ItemAdapter<T>,
-    val parent: ViewGroup,
+    private val adapter: ItemAdapter<T>,
+    parent: ViewGroup,
     @LayoutRes resource: Int
 ) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(resource, parent, false)) {
 
@@ -20,14 +20,14 @@ abstract class ItemViewHolder<T : Any>(
     private var itemPosition: Int? = null
 
     init {
-        adapter.config.onLongClick?.let { listener ->
+        adapter.config.onLongClickListener?.let { listener ->
             itemView.setOnLongClickListener {
                 item?.let { listener.click(it) }
                 item != null
             }
         }
 
-        adapter.config.onClick?.let { listener ->
+        adapter.config.onClickListener?.let { listener ->
             itemView.setOnClickListener {
                 item?.let { listener.click(it, this) }
             }
