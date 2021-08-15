@@ -32,5 +32,4 @@ object GlideAdapterHelper {
             imageView.tag = null
         }
     }
-
 }

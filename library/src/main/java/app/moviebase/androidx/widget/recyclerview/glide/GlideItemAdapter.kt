@@ -21,8 +21,8 @@ interface GlideItemAdapter<T : Any> : ItemAdapter<T>, ListPreloader.PreloadModel
         return if (position < 0 || itemCount == 0 || position >= itemCount)
             emptyList()
         else {
-            val elements = getItemBy(position + 1) ?: return emptyList()
-            mutableListOf(elements)
+            val elements = getItemBy(position) ?: return emptyList()
+            listOf(elements)
         }
     }
 
