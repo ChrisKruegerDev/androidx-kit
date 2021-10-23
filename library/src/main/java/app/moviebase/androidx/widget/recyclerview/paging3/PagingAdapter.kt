@@ -3,6 +3,7 @@ package app.moviebase.androidx.widget.recyclerview.paging3
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ConcatAdapter
+import app.moviebase.androidx.widget.recyclerview.adapter.ViewType
 import app.moviebase.androidx.widget.recyclerview.glide.GlideAdapterHelper
 import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideItemAdapter
@@ -14,6 +15,10 @@ class PagingAdapter<T : Any>(
 ) : PagingDataAdapter<T, ItemViewHolder<T>>(config.diffCallback), GlideItemAdapter<T> {
 
     override val glideConfig: GlideConfig<T> get() = config.glideConfig
+
+    init {
+        stateRestorationPolicy = config.stateRestorationPolicy
+    }
 
     fun withLoadStateFooter(): ConcatAdapter {
         val viewHolderFactory = config.loadStateViewHolder
@@ -40,6 +45,7 @@ class PagingAdapter<T : Any>(
     }
 
     override fun getItemViewType(position: Int): Int {
+        if(position >= itemCount) return ViewType.VIEW_TYPE_FOOTER
         val item = getItem(position)
         return config.onViewType.getViewType(item)
     }

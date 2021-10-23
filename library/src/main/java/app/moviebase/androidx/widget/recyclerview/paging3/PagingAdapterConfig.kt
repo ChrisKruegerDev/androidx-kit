@@ -1,6 +1,7 @@
 package app.moviebase.androidx.widget.recyclerview.paging3
 
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.adapter.*
 import app.moviebase.androidx.widget.recyclerview.diff.ItemDiffCallback
 import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
@@ -17,6 +18,7 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
     lateinit var loadStateViewHolder: LoadStateViewHolderBuilder
 
     var diffCallback: DiffUtil.ItemCallback<T> = ItemDiffCallback()
+    var stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
     var glideConfig: GlideConfig<T> = GlideConfig()
     var glideLoader: GlideViewLoader<in T>?

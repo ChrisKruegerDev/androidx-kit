@@ -12,7 +12,7 @@ abstract class LoadStateViewHolder(
     @LayoutRes resource: Int
 ) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(resource, parent, false)) {
 
-    private val context: Context get() = itemView.context
+    protected val context: Context get() = itemView.context
 
     abstract fun bindTo(loadState: LoadState)
 

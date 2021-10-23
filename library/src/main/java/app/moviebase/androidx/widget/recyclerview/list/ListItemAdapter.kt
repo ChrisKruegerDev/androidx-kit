@@ -15,10 +15,6 @@ class ListItemAdapter<T : Any>(
 
     override val glideConfig: GlideConfig<T> get() = config.glideConfig
 
-    init {
-        setHasStableIds(true)
-    }
-
     override fun getItemBy(position: Int): T? = getItem(position)
 
     override fun onBindViewHolder(holder: ItemViewHolder<T>, position: Int) {

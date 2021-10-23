@@ -41,16 +41,16 @@ class ListItemAdapterConfig<T : Any> : ItemAdapterConfig<T> {
         onLongClickListener = OnLongClickListener { value -> onClick(value) }
     }
 
-    fun viewHolder(builder: ViewHolderBuilder<T>) {
-        viewHolders[ViewType.VIEW_TYPE_DEFAULT] = builder
+    fun viewHolder(builder: ViewHolderBuilderFunction<T>) {
+        viewHolders[ViewType.VIEW_TYPE_DEFAULT] = ViewHolderBuilder { adapter, parent -> builder(adapter, parent) }
     }
 
-    fun viewHolder(viewType: Int, builder: ViewHolderBuilder<T>) {
-        viewHolders[viewType] = builder
+    fun viewHolder(viewType: Int, builder: ViewHolderBuilderFunction<T>) {
+        viewHolders[viewType] = ViewHolderBuilder { adapter, parent -> builder(adapter, parent) }
     }
 
-    fun viewHolder(viewType: KClass<out T>, builder: ViewHolderBuilder<T>) {
+    fun viewHolder(viewType: KClass<out T>, builder: ViewHolderBuilderFunction<T>) {
         onViewType = ClassOnViewType()
-        viewHolders[viewType.java.hashCode()] = builder
+        viewHolders[viewType.java.hashCode()] = ViewHolderBuilder { adapter, parent -> builder(adapter, parent) }
     }
 }
