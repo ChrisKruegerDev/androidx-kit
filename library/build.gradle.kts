@@ -2,10 +2,10 @@ plugins {
     id("com.android.library")
     kotlin("android")
     id("kotlin-android-extensions")
-    id("de.mannodermaus.android-junit5")
     id("maven-publish")
     signing
     id("org.jetbrains.dokka")
+    id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 group = "app.moviebase"
@@ -38,36 +38,36 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdk)
-    buildToolsVersion = Versions.buildTools
+    compileSdk = Versions.compileSdk
+
     defaultConfig {
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
-        versionCode = Versions.versionCode
-        versionName = Versions.versionName
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dexOptions {
-        preDexLibraries = true
-        javaMaxHeapSize = "12g"
-    }
+
     testOptions {
-        unitTests.isReturnDefaultValues = true
         animationsDisabled = true
-        unitTests.isIncludeAndroidResources = true
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
     }
-    lintOptions {
+
+    lint {
         isIgnoreTestSources = true
         isWarningsAsErrors = true
         isCheckDependencies = true
-        isAbortOnError = false
     }
+
     buildFeatures {
         viewBinding = true
         dataBinding = true

@@ -6,45 +6,50 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdk)
+    compileSdk = Versions.compileSdk
     buildToolsVersion = Versions.buildTools
+
     defaultConfig {
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
         versionCode = Versions.versionCode
         versionName = Versions.versionName
         applicationId = "app.moviebase.androidx.sample"
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dexOptions {
-        preDexLibraries = true
-        javaMaxHeapSize = "12g"
-    }
+
     testOptions {
-        unitTests.isReturnDefaultValues = true
         animationsDisabled = true
-        unitTests.isIncludeAndroidResources = true
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
     }
-    lintOptions {
+
+    lint {
         isIgnoreTestSources = true
         isWarningsAsErrors = true
         isCheckDependencies = true
-        isAbortOnError = false
     }
+
     packagingOptions {
-        exclude("META-INF/*.kotlin_module")
+        resources.excludes.add("META-INF/*.kotlin_module")
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
     }
 }
 
 androidExtensions {
     isExperimental = true
-}
+} 
 
 dependencies {
     implementation (project(":library"))
