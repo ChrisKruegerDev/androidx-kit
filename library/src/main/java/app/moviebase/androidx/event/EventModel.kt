@@ -10,6 +10,10 @@ import app.moviebase.ktx.lifecycle.bind
  */
 interface ViewModelEvent
 
+fun interface Dispatcher {
+    fun dispatch(event: ViewModelEvent)
+}
+
 fun SingleLiveEvent<ViewModelEvent>.bindTo(owner: AppCompatActivity, onChange: (ViewModelEvent?) -> Unit) = bind(owner, onChange)
 
 fun SingleLiveEvent<ViewModelEvent>.bindTo(owner: Fragment, onChange: (ViewModelEvent?) -> Unit) = bind(owner, onChange)
