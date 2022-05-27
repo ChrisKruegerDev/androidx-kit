@@ -3,8 +3,8 @@ package app.moviebase.androidx.sample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import app.moviebase.androidx.sample.databinding.ActivityMainBinding
 import app.moviebase.androidx.widget.recyclerview.adapter.recyclerViewAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,14 +23,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val items = listOf(TextItem(1, "English"), TextItem(2, "German"), TextItem(3, "Spanish"))
         itemsAdapter.setData(items)
 
-        recyclerView.apply {
+        binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = itemsAdapter
         }

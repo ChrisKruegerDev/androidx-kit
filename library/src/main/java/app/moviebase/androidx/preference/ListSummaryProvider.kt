@@ -9,7 +9,7 @@ class ListSummaryProvider : Preference.SummaryProvider<ListPreference> {
 
     var format: Formatter? = null
 
-    override fun provideSummary(preference: ListPreference?): CharSequence {
+    override fun provideSummary(preference: ListPreference): CharSequence {
         val entry = preference?.entry
         val format = format
 

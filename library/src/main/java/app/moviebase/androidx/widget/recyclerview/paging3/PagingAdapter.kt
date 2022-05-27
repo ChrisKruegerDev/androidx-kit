@@ -20,6 +20,7 @@ class PagingAdapter<T : Any>(
         stateRestorationPolicy = config.stateRestorationPolicy
     }
 
+    @Suppress("unused")
     fun withLoadStateFooter(): ConcatAdapter {
         val viewHolderFactory = config.loadStateViewHolder
         return withLoadStateFooter(
@@ -36,17 +37,17 @@ class PagingAdapter<T : Any>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<T> {
-        val factory = config.viewHolders[viewType]
+        val builder = config.viewHolders[viewType]
             ?: throw NoSuchElementException("factory for view type '$viewType' not available")
 
-        val holder = factory.create(this, parent)
+        val holder = builder.create(this, parent)
         GlideAdapterHelper.updateImageView(glideConfig, holder)
         return holder
     }
 
     override fun getItemViewType(position: Int): Int {
         if(position >= itemCount) return ViewType.VIEW_TYPE_FOOTER
-        val item = getItem(position)
+        val item = peek(position)
         return config.onViewType.getViewType(item)
     }
 

@@ -98,7 +98,7 @@ class RecyclerAdapterHelper<T : Any>(
         val selection = adapter.selection
         if (selection.enabled && holder is SelectionViewHolder) {
             val isSelected = selection.selectedItems.get(position, false)
-            holder.containerView?.isActivated = isSelected
+            holder.itemView.isActivated = isSelected
             holder.applyAnimation(adapter, position)
         }
 

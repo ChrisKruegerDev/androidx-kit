@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
 }
 
@@ -34,22 +33,16 @@ android {
         }
     }
 
-    lint {
-        isIgnoreTestSources = true
-        isWarningsAsErrors = true
-        isCheckDependencies = true
-    }
-
     packagingOptions {
         resources.excludes.add("META-INF/*.kotlin_module")
         resources.excludes.add("META-INF/AL2.0")
         resources.excludes.add("META-INF/LGPL2.1")
     }
-}
 
-androidExtensions {
-    isExperimental = true
-} 
+    buildFeatures {
+        viewBinding = true
+    }
+}
 
 dependencies {
     implementation (project(":library"))

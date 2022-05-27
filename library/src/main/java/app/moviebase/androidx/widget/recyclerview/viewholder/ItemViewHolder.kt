@@ -8,26 +8,28 @@ import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.adapter.ItemAdapter
 
 abstract class ItemViewHolder<T : Any>(
-    private val adapter: ItemAdapter<T>,
+    val itemAdapter: ItemAdapter<T>,
     parent: ViewGroup,
     @LayoutRes resource: Int
 ) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(resource, parent, false)) {
 
-    protected var item: T? = null
+    var item: T? = null
+
     protected val context: Context get() = itemView.context
-    protected val isLastPosition get() = itemPosition == adapter.getItemCount() - 1
+    protected val isLastPosition get() = itemPosition == itemAdapter.getItemCount() - 1
+    protected val itemCount get() = itemAdapter.getItemCount()
 
     private var itemPosition: Int? = null
 
     init {
-        adapter.config.onLongClickListener?.let { listener ->
+        itemAdapter.config.onLongClickListener?.let { listener ->
             itemView.setOnLongClickListener {
                 item?.let { listener.click(it) }
                 item != null
             }
         }
 
-        adapter.config.onClickListener?.let { listener ->
+        itemAdapter.config.onClickListener?.let { listener ->
             itemView.setOnClickListener {
                 item?.let { listener.click(it, this) }
             }
@@ -45,6 +47,5 @@ abstract class ItemViewHolder<T : Any>(
     protected abstract fun bind(value: T?)
 
     protected open fun unbind(value: T) {
-
     }
 }

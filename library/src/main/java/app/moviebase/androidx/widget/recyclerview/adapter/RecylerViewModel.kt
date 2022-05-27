@@ -4,6 +4,7 @@ object ViewType {
     const val VIEW_TYPE_DEFAULT = 0
     const val VIEW_TYPE_HEADER = 1
     const val VIEW_TYPE_FOOTER = 2
+    const val VIEW_TYPE_AD = 3
 }
 
 object ItemId {

@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
 
-abstract class LayoutViewHolder constructor(
-    final override val containerView: View
-) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+abstract class LayoutViewHolder(
+    private val containerView: View
+) : RecyclerView.ViewHolder(containerView) {
 
     val context: Context get() = containerView.context
 
@@ -18,6 +17,4 @@ abstract class LayoutViewHolder constructor(
         parent: ViewGroup,
         @LayoutRes resource: Int
     ) : this(LayoutInflater.from(parent.context).inflate(resource, parent, false))
-
-
 }

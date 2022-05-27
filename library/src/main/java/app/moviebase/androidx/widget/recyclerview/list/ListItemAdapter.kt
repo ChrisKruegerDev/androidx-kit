@@ -2,6 +2,7 @@ package app.moviebase.androidx.widget.recyclerview.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import app.moviebase.androidx.widget.recyclerview.glide.GlideAdapterHelper
 import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideItemAdapter
@@ -15,6 +16,15 @@ class ListItemAdapter<T : Any>(
 
     override val glideConfig: GlideConfig<T> get() = config.glideConfig
 
+    init {
+        setHasStableIds(config.onItemId != null)
+    }
+
+    override fun getItemId(position: Int): Long {
+        val item = getItem(position)
+        return config.onItemId?.getItemId(item) ?: RecyclerView.NO_ID
+    }
+
     override fun getItemBy(position: Int): T? = getItem(position)
 
     override fun onBindViewHolder(holder: ItemViewHolder<T>, position: Int) {
@@ -24,10 +34,10 @@ class ListItemAdapter<T : Any>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder<T> {
-        val factory = config.viewHolders[viewType]
+        val builder = config.viewHolders[viewType]
             ?: throw NoSuchElementException("factory for view type '$viewType' not available")
 
-        val holder = factory.create(this, parent)
+        val holder = builder.create(this, parent)
         GlideAdapterHelper.updateImageView(glideConfig, holder)
         return holder
     }

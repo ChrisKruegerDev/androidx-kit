@@ -1,11 +1,10 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("kotlin-android-extensions")
     id("maven-publish")
     signing
     id("org.jetbrains.dokka")
-    id("com.github.ben-manes.versions") version "0.39.0"
+    id("com.github.ben-manes.versions") version Versions.benManesVersions
 }
 
 group = "app.moviebase"
@@ -34,7 +33,7 @@ dependencies {
     testImplementation(Libs.Testing.truth)
     testImplementation(Libs.Testing.jupiter)
     testRuntimeOnly(Libs.Testing.jupiterEngine)
-    testImplementation(Libs.Testing.mockito)
+    testImplementation(Libs.Testing.mockitoInline)
 }
 
 android {
@@ -62,15 +61,8 @@ android {
         }
     }
 
-    lint {
-        isIgnoreTestSources = true
-        isWarningsAsErrors = true
-        isCheckDependencies = true
-    }
-
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
 }
 
@@ -80,10 +72,6 @@ tasks.withType<Test>().configureEach {
         events("passed", "skipped", "failed")
         showStandardStreams = true
     }
-}
-
-androidExtensions {
-    isExperimental = true
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -125,7 +113,7 @@ afterEvaluate {
                     name.set("Android Elements")
                     description.set("Additional widget elements for Android.")
                     url.set("https://github.com/MoviebaseApp/android-elements")
-                    inceptionYear.set("2021")
+                    inceptionYear.set("2022")
 
                     developers {
                         developer {
@@ -158,3 +146,15 @@ afterEvaluate {
     }
 }
 
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}

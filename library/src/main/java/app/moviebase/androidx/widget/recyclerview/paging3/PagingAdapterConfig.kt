@@ -8,7 +8,8 @@ import app.moviebase.androidx.widget.recyclerview.glide.GlideConfig
 import app.moviebase.androidx.widget.recyclerview.glide.GlideViewLoader
 import kotlin.reflect.KClass
 
-class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
+@Suppress("unused")
+open class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
 
     override var onClickListener: OnClickListener<T>? = null
     override var onLongClickListener: OnLongClickListener<T>? = null
@@ -35,12 +36,20 @@ class PagingAdapterConfig<T : Any> : ItemAdapterConfig<T> {
         onClickListener = OnClickListener { value, _ -> onClick(value) }
     }
 
-    fun onLonClick(onClick: (T) -> Unit) {
+    fun onLongClick(onClick: (T) -> Unit) {
         onLongClickListener = OnLongClickListener { value -> onClick(value) }
     }
 
     fun viewHolder(builder: ViewHolderBuilder<T>) {
         viewHolders[ViewType.VIEW_TYPE_DEFAULT] = builder
+    }
+
+    fun viewHolderHeader(builder: ViewHolderBuilder<T>) {
+        viewHolders[ViewType.VIEW_TYPE_HEADER] = builder
+    }
+
+    fun viewHolderAd(builder: ViewHolderBuilder<T>) {
+        viewHolders[ViewType.VIEW_TYPE_AD] = builder
     }
 
     fun viewHolder(viewType: Int, builder: ViewHolderBuilder<T>) {
