@@ -4,8 +4,6 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import kotlin.math.abs
 
-
-
 abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetChangedListener {
 
     private var currentState = State.IDLE
@@ -44,5 +42,4 @@ abstract class AppBarStateChangeListener(private val threshold: Int) : OnOffsetC
 
         val isCollapsed: Boolean get() = this == COLLAPSED
     }
-
 }

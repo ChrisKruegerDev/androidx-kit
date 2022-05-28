@@ -1,7 +1,7 @@
 object Versions {
     val versionMajor = 1
     val versionMinor = 8
-    val versionPatch = 1
+    val versionPatch = 2
 
     val versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
     val versionName = "$versionMajor.$versionMinor.$versionPatch"
@@ -40,7 +40,7 @@ object Versions {
     val glide = "4.13.1"
 
     // Util
-    val androidKtx = "1.4.0"
+    val androidKtx = "1.4.1"
     val javaInject = "1"
 
     // Testing

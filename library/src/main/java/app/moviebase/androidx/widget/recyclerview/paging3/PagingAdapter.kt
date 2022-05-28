@@ -14,6 +14,8 @@ class PagingAdapter<T : Any>(
     override val config: PagingAdapterConfig<T>,
 ) : PagingDataAdapter<T, ItemViewHolder<T>>(config.diffCallback), GlideItemAdapter<T> {
 
+    val isEmpty get() = itemCount <= 0
+
     override val glideConfig: GlideConfig<T> get() = config.glideConfig
 
     init {
