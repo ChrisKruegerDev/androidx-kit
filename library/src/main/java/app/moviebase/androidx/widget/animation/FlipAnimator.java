@@ -1,4 +1,4 @@
-package app.moviebase.androidx.widget.anim;
+package app.moviebase.androidx.widget.animation;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
