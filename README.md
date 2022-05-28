@@ -1,5 +1,5 @@
 [![Maven Central](https://img.shields.io/maven-central/v/app.moviebase/android-elements?label=Maven%20Central)](https://search.maven.org/artifact/app.moviebase/android-elements)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.5.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.6.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -20,7 +20,7 @@ To use the library in a single-platform project, add a dependency.
 
 ```kotlin
 dependencies {
-    implementation("app.moviebase:android-elements:1.6.1")
+    implementation("app.moviebase:android-elements:1.8.1")
 }
 ```
 
@@ -29,7 +29,7 @@ Creating a RecyclerView adapter with the builder:
 
 ```
 private val itemsAdapter = recyclerViewAdapter<TextItem> {
-    headerViewHolder { adapter, parent -> HeaderViewHolder(adapter, parent) }
+    viewHolderHeader { adapter, parent -> HeaderViewHolder(adapter, parent) }
     viewHolder { adapter, parent -> TextViewHolder(adapter, parent) }
 
     onItemId { it.id }
