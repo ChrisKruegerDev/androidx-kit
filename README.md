@@ -20,7 +20,7 @@ To use the library in a single-platform project, add a dependency.
 
 ```kotlin
 dependencies {
-    implementation("app.moviebase:android-elements:1.8.1")
+    implementation("app.moviebase:android-elements:1.8.3")
 }
 ```
 
