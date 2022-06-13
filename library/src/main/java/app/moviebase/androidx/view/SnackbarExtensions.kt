@@ -1,16 +1,14 @@
 package app.moviebase.androidx.view
 
-import android.graphics.drawable.GradientDrawable
 import android.view.View
-import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
-import com.google.android.material.snackbar.Snackbar
 import app.moviebase.androidx.lifecycle.SingleLiveEvent
 import app.moviebase.ktx.lifecycle.bind
 import app.moviebase.ktx.type.isNullOrFalse
+import com.google.android.material.snackbar.Snackbar
 
 typealias ViewProvider = () -> View?
 
@@ -23,11 +21,11 @@ data class SnackbarMessage(
 )
 
 data class SnackbarAction(
-    val textRes: Int? = null,
-    val text: CharSequence? = null,
+    val text: CharSequence,
     val dispatch: () -> Unit
 )
 
+@Suppress("unused")
 fun View.showSnackbar(@StringRes textRes: Int) {
     val text = context.getString(textRes)
     showSnackbar(SnackbarMessage(text))
@@ -39,37 +37,23 @@ fun View.showSnackbar(@StringRes textRes: Int) {
  */
 fun View.showSnackbar(message: SnackbarMessage, anchorViewProvider: ViewProvider? = null) {
     val snackbar = Snackbar.make(this, message.text, message.duration)
-    if (anchorViewProvider != null) {
-        try {
-            snackbar.anchorView = anchorViewProvider()
-            if (snackbar.anchorView?.isVisible.isNullOrFalse())
-                snackbar.anchorView = null
-        } catch (e: IllegalArgumentException) {
-            // hacky solution when anchor view is not available
+    anchorViewProvider?.let {
+        val anchorView = it()
+        snackbar.anchorView = if (anchorView?.isVisible.isNullOrFalse()) {
+            anchorView
+        } else {
+            null
         }
     }
 
-    val action = message.action
-    if (action != null) {
-        if (action.textRes != null)
-            snackbar.setAction(action.textRes) { action.dispatch() }
-        else
-            snackbar.setAction(action.text) { action.dispatch() }
-    }
-
-    val view = snackbar.view
-    if (message.backgroundColor != null)
-        (view.background as GradientDrawable).setColor(message.backgroundColor)
-
-
-    if (message.textColor != null) {
-        val textView = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
-        textView.setTextColor(message.textColor)
-    }
+    message.action?.let { action -> snackbar.setAction(action.text) { action.dispatch() } }
+    message.backgroundColor?.let { snackbar.setBackgroundTint(it) }
+    message.textColor?.let { snackbar.setTextColor(it) }
 
     return snackbar.show()
 }
 
+@Suppress("unused")
 fun SingleLiveEvent<SnackbarMessage>.bindTo(lifecycleOwner: LifecycleOwner, view: View, anchorViewProvider: ViewProvider? = null) {
     bind(lifecycleOwner) {
         it?.let { view.showSnackbar(message = it, anchorViewProvider = anchorViewProvider) }
