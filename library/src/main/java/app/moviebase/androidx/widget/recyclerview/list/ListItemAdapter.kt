@@ -51,4 +51,9 @@ class ListItemAdapter<T : Any>(
         if (holder is Recyclable) holder.recycle()
         GlideAdapterHelper.clearImageView(glideConfig, holder)
     }
+
+    override fun onCurrentListChanged(previousList: MutableList<T>, currentList: MutableList<T>) {
+        super.onCurrentListChanged(previousList, currentList)
+        config?.onListChanged?.invoke(previousList, currentList)
+    }
 }

@@ -24,6 +24,13 @@ open class ListItemAdapterConfig<T : Any> : ItemAdapterConfig<T> {
         set(value) {
             glideConfig.loader = value
         }
+    var onListChanged: ((previousList: MutableList<T>, currentList: MutableList<T>) -> Unit)? = null
+
+    fun whenEmpty(change: (isEmpty: Boolean) -> Unit) {
+        onListChanged = { _, curr ->
+            change(curr.isEmpty())
+        }
+    }
 
     fun onViewType(onViewType: OnViewType) {
         this.onViewType = onViewType
