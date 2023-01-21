@@ -40,9 +40,9 @@ fun View.showSnackbar(message: SnackbarMessage, anchorViewProvider: ViewProvider
     anchorViewProvider?.let {
         val anchorView = it()
         snackbar.anchorView = if (anchorView?.isVisible.isNullOrFalse()) {
-            anchorView
-        } else {
             null
+        } else {
+            anchorView
         }
     }
 
