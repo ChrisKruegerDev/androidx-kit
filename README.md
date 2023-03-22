@@ -1,4 +1,4 @@
-<img alt="Trakt" src="doc/images/topper.png" width="300">
+<img alt="Trakt" src="doc/images/topper.png" width="150">
 
 # AndroidX Topper
 [![Maven Central](https://img.shields.io/maven-central/v/app.moviebase/android-elements?label=Maven%20Central)](https://search.maven.org/artifact/app.moviebase/androidx-topper)
