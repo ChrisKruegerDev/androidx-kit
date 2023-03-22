@@ -1,53 +1,53 @@
 object Versions {
     val versionMajor = 1
-    val versionMinor = 8
-    val versionPatch = 8
+    val versionMinor = 9
+    val versionPatch = 0
 
     val versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
     val versionName = "$versionMajor.$versionMinor.$versionPatch"
 
     val minSdk = 21
-    val targetSdk = 31
-    val compileSdk = 31
-    val buildTools = "31.0.0"
+    val targetSdk = 33
+    val compileSdk = 33
+    val buildTools = "33.0.0"
 
     // Plugins
-    val androidGradle = "7.2.1"
+    val androidGradle = "7.4.0"
     val androidJunit = "1.7.1.1"
     val dokka = "1.4.30"
     val nexus = "1.0.0"
-    val benManesVersions = "0.42.0"
+    val benManesVersions = "0.44.0"
 
     // Kotlin
-    val kotlin = "1.7.20"
-    val coroutines = "1.6.2"
+    val kotlin = "1.8.0"
+    val coroutines = "1.6.4"
 
     // AndroidX
-    val appCompat = "1.4.2"
-    val core = "1.8.0"
+    val appCompat = "1.6.0"
+    val core = "1.9.0"
     val constraintLayout = "2.1.3"
     val preference = "1.2.0"
-    val recyclerView = "1.2.1"
-    val paging3 = "3.1.1"
+    val recyclerView = "1.3.0-rc01"
+    val paging3 = "3.2.0-alpha01"
     val browser = "1.4.0"
-    val collection = "1.1.0"
+    val collection = "1.2.0"
     val webkit = "1.4.0"
 
     // Google
-    val material = "1.6.1"
+    val material = "1.7.0"
 
     // UI
-    val glide = "4.13.2"
+    val glide = "4.14.2"
 
     // Util
-    val androidKtx = "1.4.1"
+    val androidKtx = "1.4.2"
     val javaInject = "1"
 
     // Testing
-    val junitJupiter = "5.8.2"
+    val junitJupiter = "5.9.2"
     val truth = "1.1.3"
-    val mockitoInline = "4.6.1"
-    val mockitoKotlin = "4.0.0"
+    val mockitoInline = "5.0.0"
+    val mockitoKotlin = "4.1.0"
 }
 
 object Plugins {
