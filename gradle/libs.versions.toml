@@ -39,7 +39,7 @@ collection = "1.2.0"
 security = "1.1.0-alpha03"
 datastore = "1.0.0"
 startup = "1.1.1"
-webkit = "1.4.0"
+webkit = "1.6.1"
 
 # google
 dagger = "2.44"
