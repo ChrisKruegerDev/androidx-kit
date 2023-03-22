@@ -1,12 +1,14 @@
-[![Maven Central](https://img.shields.io/maven-central/v/app.moviebase/android-elements?label=Maven%20Central)](https://search.maven.org/artifact/app.moviebase/android-elements)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.7.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Gradle](https://img.shields.io/badge/Gradle-7-blue?style=flat)](https://gradle.org)
+<img alt="Trakt" src="doc/images/topper.png" width="300">
+
+# AndroidX Topper
+[![Maven Central](https://img.shields.io/maven-central/v/app.moviebase/android-elements?label=Maven%20Central)](https://search.maven.org/artifact/app.moviebase/androidx-topper)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.8.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Gradle](https://img.shields.io/badge/Gradle-8-blue?style=flat)](https://gradle.org)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
-# Android Elements
-Android Elements is an additional improvement to the [AndroidX](https://developer.android.com/jetpack/androidx) library. It provides features for an easier use of user interface components.
+**AndroidX Topper leverages your coding with the [AndroidX](https://developer.android.com/jetpack/androidx) libraries. This library provides features for easier use of the standard library components.**
 
-## Adding to your project
+## Setup
 
 The library is published to Maven Central. Add the Maven Central repository if it is not already there.
 
@@ -20,14 +22,16 @@ To use the library in a single-platform project, add a dependency.
 
 ```kotlin
 dependencies {
-    implementation("app.moviebase:android-elements:1.9.0")
+    implementation("app.moviebase:androidx-topper:2.0.0")
 }
 ```
 
 ## Usage
+
+### RecyclerView builder
 Creating a RecyclerView adapter with the builder:
 
-```
+```kotlin
 private val itemsAdapter = recyclerViewAdapter<TextItem> {
     viewHolderHeader { adapter, parent -> HeaderViewHolder(adapter, parent) }
     viewHolder { adapter, parent -> TextViewHolder(adapter, parent) }
@@ -43,3 +47,52 @@ private val itemsAdapter = recyclerViewAdapter<TextItem> {
     }
 }
 ```
+
+### ViewModel event communication
+
+Send your actions and messages from the ViewModel to the Activity via LiveData.
+
+For example, start a new Activity or Fragment:
+
+```kotlin
+// in the Activity or Fragment
+viewModel.action.bindTo(this)
+viewModel.message.bindTo(this)
+
+// send from the ViewModel
+val action = SingleLiveEvent<Action>()
+
+action.value = StartActivityActio(MainActivity::class)
+action.value = ShowDialogFragmentAction(MyDialogFragment::clas)
+```
+
+For example, send a Snackbar message:
+
+```kotlin
+// in the Activity or Fragment
+viewModel.message.bindTo(this)
+
+// send from the ViewModel
+val message = SingleLiveEvent<SnackbarMessage>()
+
+message.value = SuccessSnackbarMessage(context, R.string.message)
+```
+
+### Open CustomTab
+
+Open a CustomTab:
+
+```kotlin
+CustomTabHelper.openCustomTab(activity, uri, ContextCompatColors.colorSurface(activity), Logger::e)
+
+```
+
+### View extensions
+
+Coming soon
+
+### AppBar change handling
+
+Coming soon
+
+
