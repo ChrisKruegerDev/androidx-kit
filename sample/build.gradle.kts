@@ -1,28 +1,29 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    id("kotlin-kapt")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    compileSdk = Versions.compileSdk
-    buildToolsVersion = Versions.buildTools
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "app.moviebase.androidx.sample"
 
     defaultConfig {
-        minSdk = Versions.minSdk
-        targetSdk = Versions.targetSdk
-        versionCode = Versions.versionCode
-        versionName = Versions.versionName
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+
+        versionCode = 1
+        versionName = "1.0"
         applicationId = "app.moviebase.androidx.sample"
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     testOptions {
@@ -45,14 +46,5 @@ android {
 }
 
 dependencies {
-    implementation (project(":library"))
-
-    implementation(Libs.Kotlin.kotlin)
-    implementation(Libs.Kotlin.kotlinReflect)
-
-    implementation(Libs.AndroidX.appCompat)
-    implementation(Libs.AndroidX.recyclerView)
-    implementation(Libs.AndroidX.constraintLayout)
-    implementation(Libs.Google.material)
-    implementation(Libs.Ui.glideRecyclerView)
+    implementation(project(":library"))
 }
