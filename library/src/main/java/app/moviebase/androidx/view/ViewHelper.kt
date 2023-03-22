@@ -5,8 +5,8 @@ import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import app.moviebase.androidx.R
-import app.moviebase.ktx.content.toPx
-import app.moviebase.ktx.view.marginTopValue
+import app.moviebase.androidx.content.toPx
+import app.moviebase.androidx.view.marginTopValue
 
 object ViewHelper {
 

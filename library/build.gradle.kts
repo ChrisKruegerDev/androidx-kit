@@ -21,10 +21,12 @@ dependencies {
     api(libs.androidx.browser)
     api(libs.androidx.paging)
     api(libs.androidx.paging.ktx)
+    api(libs.androidx.work.ktx)
+    api(libs.androidx.navigation.ui)
+    api(libs.androidx.navigation.fragment.ktx)
 
     api(libs.google.material)
 
-    implementation("app.moviebase:android-ktx:1.4.2")
     api(libs.inject)
     api(libs.glide.recyclerview)
 

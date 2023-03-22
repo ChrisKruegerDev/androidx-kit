@@ -135,6 +135,8 @@ androidx-browser = { module = "androidx.browser:browser", version.ref = "browser
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preference" }
 androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
 androidx-webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigation" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 
 # google
 google-material = { module = "com.google.android.material:material", version.ref = "material" }

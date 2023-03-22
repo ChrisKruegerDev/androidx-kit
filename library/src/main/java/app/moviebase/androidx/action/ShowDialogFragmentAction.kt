@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import app.moviebase.ktx.app.showDialogFragment
+import app.moviebase.androidx.app.showDialogFragment
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 
