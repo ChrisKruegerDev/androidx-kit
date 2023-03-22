@@ -27,7 +27,6 @@ fun interface OnLongClickListener<T> {
     fun click(value: T)
 }
 
-// TODO:  add T as value type
 fun interface OnViewType {
     fun getViewType(value: Any?): Int
 }

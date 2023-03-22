@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-// TODO: Move into KTX
 val Context.isLandscape
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
