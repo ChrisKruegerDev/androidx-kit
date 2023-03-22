@@ -1,7 +1,7 @@
 package app.moviebase.androidx.widget.appbar
 
 import android.view.View
-import app.moviebase.ktx.content.toPx
+import app.moviebase.androidx.content.toPx
 
 class TranslationAppBarStateChangeListener(private val view: View) : PercentAppBarStateChangeListener() {
 

@@ -3,7 +3,7 @@ package app.moviebase.androidx.widget.recyclerview
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import app.moviebase.ktx.content.px
+import app.moviebase.androidx.content.px
 
 class HorizontalItemOffsetDecoration(
     offsetDp: Int,

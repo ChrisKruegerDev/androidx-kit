@@ -3,7 +3,7 @@ package app.moviebase.androidx.view
 import android.graphics.Outline
 import android.view.View
 import android.view.ViewOutlineProvider
-import app.moviebase.ktx.content.px
+import app.moviebase.androidx.content.px
 
 fun imageOutlineProvider(dp: Int): ViewOutlineProvider {
     val radius = dp.px.toFloat()

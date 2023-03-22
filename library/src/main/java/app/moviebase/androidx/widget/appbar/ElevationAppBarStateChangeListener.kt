@@ -2,7 +2,7 @@ package app.moviebase.androidx.widget.appbar
 
 import androidx.core.view.ViewCompat
 import com.google.android.material.appbar.AppBarLayout
-import app.moviebase.ktx.content.toPx
+import app.moviebase.androidx.content.toPx
 
 class ElevationAppBarStateChangeListener(private val elevationDp: Int) : AppBarStateChangeListener(0) {
 

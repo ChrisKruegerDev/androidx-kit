@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import app.moviebase.ktx.app.startActivityWithFade
+import app.moviebase.androidx.app.startActivityWithFade
 import kotlin.reflect.KClass
 
 abstract class StartActivityAction(

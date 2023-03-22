@@ -6,8 +6,8 @@ import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import app.moviebase.androidx.lifecycle.SingleLiveEvent
-import app.moviebase.ktx.lifecycle.bind
-import app.moviebase.ktx.type.isNullOrFalse
+import app.moviebase.androidx.lifecycle.bind
+import app.moviebase.androidx.type.isNullOrFalse
 import com.google.android.material.snackbar.Snackbar
 
 typealias ViewProvider = () -> View?

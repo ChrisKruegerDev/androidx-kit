@@ -3,7 +3,7 @@ package app.moviebase.androidx.event
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import app.moviebase.androidx.lifecycle.SingleLiveEvent
-import app.moviebase.ktx.lifecycle.bind
+import app.moviebase.androidx.lifecycle.bind
 
 /**
  * Maker interface to send events to the ViewModel.

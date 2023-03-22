@@ -5,7 +5,7 @@ import android.content.res.Resources
 import android.graphics.Outline
 import android.view.View
 import android.view.ViewOutlineProvider
-import app.moviebase.ktx.content.toPx
+import app.moviebase.androidx.content.toPx
 
 class RectViewOutlineProvider(private val radius: Float) : ViewOutlineProvider() {
 

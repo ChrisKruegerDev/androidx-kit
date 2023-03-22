@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import app.moviebase.androidx.widget.recyclerview.adapter.AbstractListRecyclerAdapter
 import app.moviebase.androidx.widget.recyclerview.list.ListItemAdapter
-import app.moviebase.ktx.lifecycle.bind
+import app.moviebase.androidx.lifecycle.bind
 
 @Deprecated("Use bindListAdapter")
 fun <T : Any> LiveData<out List<T>>.bindAdapterUpdate(owner: LifecycleOwner, adapter: AbstractListRecyclerAdapter<T>) {
