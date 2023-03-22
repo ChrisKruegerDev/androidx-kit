@@ -6,7 +6,12 @@ pluginManagement {
     }
 }
 
-rootProject.name = "android-elements"
+
+plugins {
+    id("com.gradle.enterprise") version "3.12.5"
+}
+
+rootProject.name = "androidx-topper"
 
 include(":library")
 include(":sample")

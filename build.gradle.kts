@@ -1,5 +1,15 @@
+//import com.diffplug.gradle.spotless.SpotlessExtension
+
 plugins {
-    id("io.github.gradle-nexus.publish-plugin") version Versions.nexus
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.ben.manes.versions) apply false
+//    alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.maven.publish) apply false
 }
 
 buildscript {
@@ -8,36 +18,41 @@ buildscript {
         google()
         mavenCentral()
     }
-    dependencies {
-        classpath(kotlin("gradle-plugin", Versions.kotlin))
-        classpath(Plugins.androidGradle)
-        classpath(Plugins.androidJunit)
-        classpath(Plugins.dokka)
-    }
-}
-
-
-group = "app.moviebase"
-version = Versions.versionName
-
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(findProperty("SONATYPE_USER") as String?)
-            password.set(findProperty("SONATYPE_PASSWORD") as String?)
-            stagingProfileId.set(findProperty("SONATYPE_STAGING_PROFILE_ID") as String?)
-        }
-    }
 }
 
 allprojects {
     repositories {
-        gradlePluginPortal()
         google()
+        gradlePluginPortal()
         mavenCentral()
         mavenLocal()
     }
-}
 
+//    apply(plugin = rootProject.libs.plugins.spotless.get().pluginId)
+//    configure<SpotlessExtension> {
+//        kotlin {
+//            target("**/*.kt")
+//            targetExclude("$buildDir/**/*.kt")
+//            targetExclude("bin/**/*.kt")
+//            ktlint(libs.versions.ktlint.get())
+//        }
+//        kotlinGradle {
+//            target("**/*.kts")
+//            targetExclude("$buildDir/**/*.kts")
+//            ktlint(libs.versions.ktlint.get())
+//        }
+//    }
+
+//    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>().configureEach {
+//        compilerOptions {
+//            // Treat all Kotlin warnings as errors
+//            allWarningsAsErrors.set(true)
+//
+//            // Enable experimental coroutines APIs, including Flow
+//            freeCompilerArgs.addAll(
+//                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+//                "-opt-in=kotlinx.coroutines.FlowPreview"
+//            )
+//        }
+//    }
+}

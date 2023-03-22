@@ -43,7 +43,8 @@ class BottomNavigationBehavior<V : View>(
             params.anchorId = child.id
             params.anchorGravity = Gravity.TOP
             params.gravity = Gravity.TOP
-            snackbarLayout.layoutParams = params
+            // TODO: FIX THIS ACCESS
+//            snackbarLayout.layoutParams = params
         }
     }
 
