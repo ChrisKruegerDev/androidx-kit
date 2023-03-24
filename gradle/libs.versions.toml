@@ -43,7 +43,7 @@ webkit = "1.6.1"
 
 # google
 dagger = "2.44"
-material = "1.7.0"
+material = "1.8.0"
 billing = "5.1.0"
 ksp = "1.7.10-1.0.6"
 playCore = "1.10.3"
