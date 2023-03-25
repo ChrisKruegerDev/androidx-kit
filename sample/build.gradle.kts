@@ -46,5 +46,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":library"))
+    implementation(project(":androidx-topper"))
 }
