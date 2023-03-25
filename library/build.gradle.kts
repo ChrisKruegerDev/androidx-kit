@@ -39,6 +39,7 @@ dependencies {
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "app.moviebase.androidx"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
