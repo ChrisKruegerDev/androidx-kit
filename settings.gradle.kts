@@ -13,5 +13,5 @@ plugins {
 
 rootProject.name = "androidx-topper"
 
-include(":library")
+include(":androidx-topper")
 include(":sample")
