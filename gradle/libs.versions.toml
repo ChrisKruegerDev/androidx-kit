@@ -1,6 +1,6 @@
 [versions]
 # plugins
-androidGradle = "7.4.2"
+androidGradle = "8.0.0"
 googleServices = "4.3.14"
 jdkLibs = "1.1.6"
 spotless = "6.17.0"
