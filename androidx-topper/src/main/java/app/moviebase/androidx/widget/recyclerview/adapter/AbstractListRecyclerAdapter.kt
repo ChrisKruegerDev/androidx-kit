@@ -1,5 +1,6 @@
 package app.moviebase.androidx.widget.recyclerview.adapter
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,10 @@ typealias ListFilter<T> = (T) -> Boolean
 
 @Deprecated(
     "use the native solution with ListAdapter",
-    ReplaceWith("ListAdapter", "app.moviebase.androidx.widget.recyclerview.adapter.ListAdapter")
+    ReplaceWith("ListAdapter", "app.moviebase.androidx.widget.recyclerview.adapter.ListAdapter"),
 )
 abstract class AbstractListRecyclerAdapter<T : Any>(
-    final override val config: RecyclerAdapterConfig<T>
+    final override val config: RecyclerAdapterConfig<T>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), RecyclerViewAdapterBase<T> {
 
     final override var data: MutableList<T> = ArrayList()
@@ -115,5 +116,4 @@ abstract class AbstractListRecyclerAdapter<T : Any>(
         filter = listFilter
         updateData(backedData)
     }
-
 }
