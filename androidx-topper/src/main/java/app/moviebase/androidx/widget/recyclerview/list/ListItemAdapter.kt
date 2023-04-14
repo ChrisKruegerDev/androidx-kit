@@ -54,6 +54,6 @@ class ListItemAdapter<T : Any>(
 
     override fun onCurrentListChanged(previousList: MutableList<T>, currentList: MutableList<T>) {
         super.onCurrentListChanged(previousList, currentList)
-        config?.onListChanged?.invoke(previousList, currentList)
+        config.onListChanged?.invoke(currentList.isEmpty())
     }
 }
