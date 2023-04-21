@@ -56,7 +56,7 @@ playReview = "2.0.0"
 playOss = "17.0.0"
 
 # data
-ktor = "2.2.4"
+ktor = "2.3.0"
 gson = "2.10.1"
 tmdbApi = "0.7.4"
 traktApi = "0.1.2"
