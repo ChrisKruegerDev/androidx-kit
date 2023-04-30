@@ -22,4 +22,3 @@ gradleEnterprise {
 rootProject.name = "androidx-kit"
 
 include(":androidx-kit")
-include(":sample")
