@@ -1,6 +1,6 @@
 [versions]
 # plugins
-androidGradle = "7.4.2"
+androidGradle = "8.0.0"
 googleServices = "4.3.14"
 jdkLibs = "1.1.6"
 spotless = "6.17.0"
@@ -11,7 +11,7 @@ ktlint = "0.48.2"
 mavenPublish = "0.25.2"
 
 # kotlin
-kotlin = "1.8.10"
+kotlin = "1.8.21"
 kotlinxDatetime = "0.4.0"
 kotlinxSerialization = "1.5.0"
 coroutines = "1.6.4"
@@ -54,14 +54,6 @@ playAdIdentifiers = "18.0.1"
 playAuth = "20.3.0"
 playReview = "2.0.0"
 playOss = "17.0.0"
-
-# data
-ktor = "2.3.0"
-gson = "2.10.1"
-tmdbApi = "0.7.4"
-traktApi = "0.1.2"
-mutliplatformSettings = "1.0.0-RC"
-jacksonCsv = "2.14.1"
 
 # ui
 glide = "4.15.1"
@@ -140,17 +132,6 @@ androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fr
 
 # google
 google-material = { module = "com.google.android.material:material", version.ref = "material" }
-
-# data
-ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-json = { module = "io.ktor:ktor-client-json", version.ref = "ktor" }
-ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
-ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
-ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
-ktor-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
-ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 # ui
 glide = { module = "com.github.bumptech.glide:compose", version.ref = "glide" }

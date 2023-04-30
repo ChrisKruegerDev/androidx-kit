@@ -3,10 +3,8 @@ package app.moviebase.androidx.view
 import android.content.Context
 import android.util.TypedValue
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import app.moviebase.androidx.R
 import app.moviebase.androidx.content.toPx
-import app.moviebase.androidx.view.marginTopValue
 
 object ViewHelper {
 
@@ -29,8 +27,9 @@ object ViewHelper {
         val typedValue = TypedValue()
 
         var attributeResourceId = android.R.attr.actionBarSize
-        if (activity is AppCompatActivity)
-            attributeResourceId = R.attr.actionBarSize
+        // not available anymore!?
+//        if (activity is AppCompatActivity)
+//            attributeResourceId = R.attr.actionBarSize
 
         val resolveAttribute = activity.theme.resolveAttribute(attributeResourceId, typedValue, true)
 
