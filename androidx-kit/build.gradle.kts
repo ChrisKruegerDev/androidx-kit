@@ -10,9 +10,11 @@ plugins {
 }
 
 dependencies {
+    // kotlin
     implementation(libs.kotlin)
     implementation(libs.kotlin.reflect)
 
+    // androidx
     api(libs.androidx.recyclerview)
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
@@ -25,9 +27,8 @@ dependencies {
     api(libs.androidx.navigation.ui)
     api(libs.androidx.navigation.fragment.ktx)
 
+    // ui
     api(libs.google.material)
-
-    api(libs.inject)
     api(libs.glide.recyclerview)
 
     testImplementation(libs.kotlinx.coroutines.core)

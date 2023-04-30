@@ -15,8 +15,6 @@ import androidx.browser.customtabs.CustomTabsSession;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 
 public class CustomTabActivityHelper implements ServiceConnectionCallback {
 
@@ -25,7 +23,6 @@ public class CustomTabActivityHelper implements ServiceConnectionCallback {
   private CustomTabsServiceConnection mConnection;
   private ConnectionCallback mConnectionCallback;
 
-  @Inject
   public CustomTabActivityHelper() {
   }
 
