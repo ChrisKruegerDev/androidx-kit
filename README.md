@@ -1,12 +1,10 @@
-<img alt="Trakt" src="doc/images/topper.png" width="150">
-
-# AndroidX Topper
+# AndroidX KIT
 [![Maven Central](https://img.shields.io/maven-central/v/app.moviebase/androidx-topper?label=Maven%20Central)](https://search.maven.org/artifact/app.moviebase/androidx-topper)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.8.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Gradle](https://img.shields.io/badge/Gradle-8-blue?style=flat)](https://gradle.org)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
-**AndroidX Topper leverages your coding with the [AndroidX](https://developer.android.com/jetpack/androidx) libraries. This library provides features for easier use of the standard library components.**
+**AndroidX KIT leverages your coding with the [AndroidX](https://developer.android.com/jetpack/androidx) libraries. This library provides features for easier use of the standard library components.**
 
 ## Setup
 
