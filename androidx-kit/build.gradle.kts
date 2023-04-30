@@ -30,13 +30,14 @@ dependencies {
     api(libs.inject)
     api(libs.glide.recyclerview)
 
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.test)
-    implementation(libs.kotlin.junit5)
-    implementation(libs.junit)
-    implementation(libs.junit.jupiter.api)
+    testImplementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlin.junit5)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.junit.jupiter.api)
     runtimeOnly(libs.junit.jupiter.engine)
-    implementation(libs.truth)
 }
 
 android {
