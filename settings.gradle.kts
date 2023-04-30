@@ -19,7 +19,7 @@ gradleEnterprise {
     }
 }
 
-rootProject.name = "androidx-topper"
+rootProject.name = "androidx-kit"
 
-include(":androidx-topper")
+include(":androidx-kit")
 include(":sample")

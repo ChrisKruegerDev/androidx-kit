@@ -44,7 +44,7 @@ android {
         viewBinding = true
     }
 }
-
 dependencies {
-    implementation(project(":androidx-topper"))
+    implementation(project(":androidx-kit"))
 }
+
