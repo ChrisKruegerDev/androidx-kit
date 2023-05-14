@@ -38,7 +38,13 @@ fun TabLayout.selectTabByTag(tagId: Any?): Boolean {
     for (i in 0 until tabCount) {
         val tab = getTabAt(i)
         if (tab != null && tab.tag == tagId) {
-            if(!tab.isSelected) postDelayed(100) { tab.select() }
+            if(!tab.isSelected) {
+                postDelayed(100) {
+                    if(tab.parent != null) {
+                        tab.select()
+                    }
+                }
+            }
             return true
         }
     }
