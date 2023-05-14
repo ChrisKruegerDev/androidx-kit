@@ -20,7 +20,7 @@ To use the library in a single-platform project, add a dependency.
 
 ```kotlin
 dependencies {
-    implementation("app.moviebase:androidx-kit:2.0.2")
+    implementation("app.moviebase:androidx-kit:2.0.5")
 }
 ```
 
