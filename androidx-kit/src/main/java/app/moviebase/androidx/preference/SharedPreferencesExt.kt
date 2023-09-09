@@ -3,7 +3,7 @@ package app.moviebase.androidx.preference
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-fun preferenceChangeListener(block: (String) -> Unit) =
+fun preferenceChangeListener(block: (String?) -> Unit) =
         SharedPreferences.OnSharedPreferenceChangeListener { _, key -> block(key) }
 
 fun SharedPreferences.set(key: String, value: String?) = edit { putString(key, value) }

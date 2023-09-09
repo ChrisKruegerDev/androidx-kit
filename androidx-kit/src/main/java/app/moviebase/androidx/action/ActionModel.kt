@@ -15,8 +15,8 @@ class ActionObserver(
     private val fragment: Fragment? = null
 ) : Observer<Action> {
 
-    override fun onChanged(action: Action?) {
-        action?.execute(activity, fragment)
+    override fun onChanged(action: Action) {
+        action.execute(activity, fragment)
     }
 
 }

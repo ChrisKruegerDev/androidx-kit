@@ -2,11 +2,10 @@ package app.moviebase.androidx.lifecycle
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 
 object LifecycleTransformations {
 
     fun <X, Y> map(source: LiveData<X>, mapFunction: (X) -> Y) =
-        Transformations.map(source, mapFunction) as MediatorLiveData<Y>
-
+        source.map(mapFunction) as MediatorLiveData<Y>
 }

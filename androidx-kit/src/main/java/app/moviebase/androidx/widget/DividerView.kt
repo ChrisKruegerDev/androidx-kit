@@ -36,13 +36,13 @@ public class DividerView @JvmOverloads constructor(
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         if (orientation == ORIENTATION_HORIZONTAL) {
             val center = height * .5f
-            canvas?.drawLine(0f, center, width.toFloat(), center, paint)
+            canvas.drawLine(0f, center, width.toFloat(), center, paint)
         } else {
             val center = width * .5f
-            canvas?.drawLine(center, 0f, center, height.toFloat(), paint)
+            canvas.drawLine(center, 0f, center, height.toFloat(), paint)
         }
     }
 
